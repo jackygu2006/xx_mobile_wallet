@@ -1,0 +1,177 @@
+name: wallet
+description: xx network wallet
+
+# The following line prevents the package from being accidentally published to
+# pub.dev using `pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  flutter_mobx: ^2.0.0
+  flutter_svg: ^0.22.0
+  json_annotation: ^4.0.1
+  get_storage: ^2.0.2
+  update_app: ^0.1.7
+  device_info: ^2.0.1
+  uni_links: ^0.5.1
+  # firebase_messaging: ^10.0.5
+  # cached_network_image: ^3.0.0
+  polkawallet_plugin_kusama:
+    git:
+      url: https://github.com/polkawallet-io/polkawallet_plugin_kusama.git
+      ref: e9e7c2546a1a6241c55a064d2fa57987a9265051
+  polkawallet_plugin_acala:
+    git:
+      url: https://github.com/AcalaNetwork/polkawallet_plugin_acala.git
+      ref: 4e9f4f714666a5e6214fff9e5a89df03d62b756b
+  polkawallet_plugin_karura:
+    git:
+      url: https://github.com/AcalaNetwork/polkawallet_plugin_karura.git
+      ref: 5c116fb20a6698871cbad2a8910fbba8597a5aed
+  polkawallet_plugin_statemine:
+    git:
+      url: https://github.com/polkawallet-io/polkawallet_plugin_statemine.git
+      ref: 7d8cf727c5eb78d97205e53fe2ade55c513754a9
+  polkawallet_plugin_laminar:
+    git:
+      url: https://github.com/polkawallet-io/polkawallet_plugin_laminar.git
+      ref: 810fed242afdbe35ca89ecdb2c15d6e1c1c7f85f
+  polkawallet_plugin_bifrost:
+    git:
+      url: https://github.com/bifrost-finance/polkawallet_plugin_bifrost.git
+      ref: 2f6cd149a369229a51bc61a020d453f4414347f1
+  polkawallet_plugin_chainx:
+    git:
+      url: https://github.com/chainx-org/polkawallet_plugin_chainx.git
+      ref: a4a1d472e06822b22ccc25287405fba2048fe6e8
+  polkawallet_plugin_edgeware:
+    git:
+      url: https://github.com/remzrn/polkawallet_plugin_edgeware.git
+      ref: 11be316dc77b721d41ed6774fbf8d444a5a8eaa9
+      
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.0
+  # jpush_flutter: ^2.1.5
+  biometric_storage: ^2.0.2
+  firebase_core: ^1.6.0
+  firebase_analytics: ^8.3.2
+  polkawallet_ui: ^0.3.2
+
+dependency_overrides:
+  polkawallet_plugin_kusama:
+    path: ../polkawallet_plugin_kusama
+  polkawallet_plugin_xxnetwork:
+    path: ../polkawallet_plugin_xxnetwork
+  # polkawallet_plugin_acala:
+  #   path: ../../coding/polkawallet/polkawallet_plugin_acala
+  # polkawallet_plugin_karura:
+  #   path: ../../coding/polkawallet/polkawallet_plugin_karura
+#  polkawallet_plugin_bifrost:
+#    path: ../../coding/polkawallet/polkawallet_plugin_bifrost
+  # polkawallet_plugin_laminar:
+  #   path: ../../coding/polkawallet/polkawallet_plugin_laminar
+#  polkawallet_plugin_statemine:
+#    path: ../../coding/polkawallet/polkawallet_plugin_statemine
+#  polkawallet_plugin_chainx:
+#    path: ../../coding/polkawallet/polkawallet_plugin_chainx
+#  polkawallet_plugin_edgeware:
+#    path: ../../coding/polkawallet/polkawallet_plugin_edgeware
+  polkawallet_ui:
+#    git:
+#      url: https://github.com/polkawallet-io/ui.git
+#      ref: 485a9cde97f2446d74a1aeb6d8d63e33683461a5
+    path: ../ui
+  # polkawallet_sdk: ^0.3.2
+  polkawallet_sdk:
+    path: ../sdk
+  charts_flutter: ^0.11.0
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: ^2.0.3
+  mobx_codegen: ^2.0.2
+  json_serializable: ^4.1.4
+#  build_runner: ^1.10.9
+#  mobx_codegen: ^1.1.1
+#  json_serializable: ^3.5.1
+  flutter_launcher_icons: ^0.9.0
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/icon.png"
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/images/logo_about.png
+    - assets/images/nav_assets.svg
+    - assets/images/nav_profile.svg
+    - assets/images/screenshot.png
+    - assets/images/scan.svg
+    - assets/images/assets_up.svg
+    - assets/images/assets_down.svg
+    - assets/images/tx_failed.svg
+    - assets/images/assets_send.png
+    - assets/images/wallet_connect_logo.png
+    - assets/images/wallet_connect_banner.png
+    - assets/images/network_icon_bg.svg
+    - assets/images/network_icon_border.svg
+    - assets/images/menu.svg
+    - assets/images/qr.svg
+    - assets/images/scan.svg
+    - assets/images/public/guide_0.png
+    - assets/images/public/guide_1.png
+    - assets/images/public/guide_2.png
+    - assets/images/public/guide_3.png
+    - assets/images/public/guide_4.png
+    - assets/images/public/banner_kar_plo.png
+    - assets/images/public/kar_bg.png
+    - assets/images/public/kar_logo.png
+    - assets/images/public/kar_crowd_loan.jpg
+    - assets/images/public/kusama_logo.svg
+    - assets/images/public/github_logo.svg
+    - assets/images/public/
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware.
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/assets-and-images/#from-packages
+
+  fonts:
+    - family: BebasNeue
+      fonts:
+        - asset: assets/fonts/BebasNeue.otf
+          weight: 700
