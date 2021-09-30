@@ -69,6 +69,7 @@ import 'package:polkawallet_ui/pages/scanPage.dart';
 import 'package:polkawallet_ui/pages/txConfirmPage.dart';
 import 'package:polkawallet_ui/pages/walletExtensionSignPage.dart';
 import 'package:uni_links/uni_links.dart';
+import 'package:wallet/common/types/xxnetwork.dart';
 
 const get_storage_container = 'configuration';
 
@@ -203,7 +204,30 @@ class _WalletAppState extends State<WalletApp> {
     setState(() {
       _connectedNode = null;
     });
-    final connected = await service.plugin.start(_keyring);
+    print("====== wallet: _startPlugin ======");
+    print(_service.plugin.basic.name);
+
+    NetworkParams node = new NetworkParams();
+    print(service.plugin.basic);
+    // ignore: deprecated_member_use
+    List<NetworkParams> nodes = new List<NetworkParams>();
+    Object types = {};
+    if (_service.plugin.basic.name == "xxnetwork" ||
+        _service.plugin.basic.name == "protonet") {
+      // 需要定义xxnetwork的配置，即NetworkParams $$$$$$
+      //{name: Polkadot (Live, hosted by PatractLabs), endpoint: wss://polkadot.elara.patract.io, ss58: 0}
+      node.name = _service.plugin.basic.name;
+      node.endpoint = 'wss://protonet.xxlabs.net';
+      node.ss58 = 42;
+      nodes = [node];
+      types = registryTypes;
+    } else {
+      nodes = null;
+      types = null;
+    }
+
+    final connected = await service.plugin.start(_keyring, nodes, types);
+
     setState(() {
       _connectedNode = connected;
     });
@@ -265,7 +289,9 @@ class _WalletAppState extends State<WalletApp> {
       });
     }
     _service.plugin.sdk.api.account.unsubscribeBalance();
-    final connected = await _service.plugin.start(_keyring, nodes: [node]);
+    print("====== wallet: _changeNode ======");
+    final connected =
+        await _service.plugin.start(_keyring, [node], registryTypes);
     setState(() {
       _connectedNode = connected;
     });

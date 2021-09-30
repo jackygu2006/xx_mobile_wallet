@@ -35,7 +35,6 @@ void main() async {
   ];
 
   final pluginsConfig = await WalletApi.getPluginsConfig();
-  print("###################");
   Map<String, bool> a = {"visible": true, 'enabled': true};
   pluginsConfig['protonet'] = a;
   pluginsConfig['xxnetwork'] = a;
