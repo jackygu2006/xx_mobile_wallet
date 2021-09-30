@@ -67,7 +67,7 @@ const Map<String, String> zhAccount = {
   'wc.data': '内容',
   'guide.0': '安全的本地存储',
   'guide.1': '支持离线签名',
-  'guide.2': '参与 DOT/KSM 质押和治理',
+  'guide.2': '参与 PCT 质押和治理',
   'guide.3': '支持 Kusama 社交恢复',
   'guide.4': '支持 Acala Defi 中心',
   'guide.enter': '进入 Polkawallet',

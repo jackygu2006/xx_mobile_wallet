@@ -302,8 +302,8 @@ class _AssetsState extends State<AssetsPage> {
             padding: EdgeInsets.only(bottom: 8),
             child: ListTile(
               leading: AddressIcon(acc.address, svg: acc.icon),
-              title: Text(UI.accountName(context, acc)),
-              subtitle: Text(network),
+              title: Text(UI.accountName(context, acc).toUpperCase()),
+              subtitle: Text(network.toUpperCase()),
             ),
           ),
           ListTile(
@@ -588,9 +588,10 @@ class _AssetsState extends State<AssetsPage> {
                             height: 36,
                             width: 37,
                             margin: EdgeInsets.only(right: 8),
-                            child: widget.service.plugin.tokenIcons[symbol],
+                            child: widget.service.plugin
+                                .tokenIcons[symbol.toUpperCase()],
                           ),
-                          title: Text(symbol),
+                          title: Text(symbol.toUpperCase()),
                           trailing: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.end,

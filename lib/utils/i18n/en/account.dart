@@ -75,7 +75,7 @@ const Map<String, String> enAccount = {
   'wc.data': 'Data',
   'guide.0': 'Safe local storage',
   'guide.1': 'Offline signature',
-  'guide.2': 'DOT/KSM Staking & Governance',
+  'guide.2': 'PTC Staking & Governance',
   'guide.3': 'Kusama social recovery',
   'guide.4': 'Acala Defi Hub',
   'guide.enter': 'Enter Polkawallet',

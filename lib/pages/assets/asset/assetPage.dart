@@ -239,7 +239,7 @@ class _AssetPageState extends State<AssetPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          symbol,
+          symbol.toUpperCase(),
           style: TextStyle(fontSize: 20, color: Colors.black87),
         ),
         centerTitle: true,

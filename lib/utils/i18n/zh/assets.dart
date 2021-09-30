@@ -52,7 +52,7 @@ const Map<String, String> zhAssets = {
   'lock.vest.unlocking': '锁定中',
   'lock.vest.claimable': '可释放',
   'lock.vest.claim': '释放',
-  'claim': '认领 DOT',
+  'claim': '认领 PTC',
   'claim.agree': '同意',
   'claim.terms': '使用条款',
   'claim.terms.url': '您也可以通过链接查看原文',

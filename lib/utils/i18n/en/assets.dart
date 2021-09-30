@@ -55,7 +55,7 @@ const Map<String, String> enAssets = {
   'lock.vest.unlocking': 'Unlocking',
   'lock.vest.claimable': 'Redeemable',
   'lock.vest.claim': 'Redeem',
-  'claim': 'Claim DOT',
+  'claim': 'Claim PTC',
   'claim.agree': 'I Agree',
   'claim.terms': 'Terms and Conditions',
   'claim.terms.url': 'You can also find them at',
