@@ -1,5 +1,5 @@
 const Map<String, String> zhPublic = {
-  'auction.switch': '正在切换至 Kusama...',
+  'auction.switch': '正在切换...',
   'auction.support': '支持',
   'auction.kar': '平行链拍卖',
   'auction.live': '活动进行中',
