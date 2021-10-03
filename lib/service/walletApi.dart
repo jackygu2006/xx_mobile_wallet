@@ -14,7 +14,9 @@ class WalletApi {
   static const String _jsCodeStorageVersionKey = 'js_service_version_';
 
   static String getSnEndpoint(String relayChainName) {
-    return 'https://$relayChainName.api.subscan.io/api/scan';
+    return relayChainName == 'xxnetwork' || relayChainName == 'protonet'
+        ? 'http://subscan.xxnetwork.asia:4399/api/scan'
+        : 'https://$relayChainName.api.subscan.io/api/scan';
   }
 
   static Future<Map> getLatestVersion() async {
@@ -111,8 +113,9 @@ class WalletApi {
   }
 
   static Future<Map> getTokenPriceFromSubScan(String network) async {
-    final url =
-        'https://${network.toLowerCase()}.api.subscan.io/api/scan/token';
+    final url = network == 'xxnetwork' || network == 'protonet'
+        ? 'http://subscan.xxnetwork.asia:4399/api/scan/token'
+        : 'https://${network.toLowerCase()}.api.subscan.io/api/scan/token';
     try {
       Response res = await get(Uri.parse(url));
       if (res == null) {

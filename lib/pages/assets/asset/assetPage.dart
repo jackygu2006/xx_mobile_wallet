@@ -1,3 +1,4 @@
+// 转账与收款页 ######
 import 'package:wallet/common/consts.dart';
 import 'package:wallet/pages/assets/asset/locksDetailPage.dart';
 import 'package:wallet/pages/assets/transfer/detailPage.dart';
@@ -152,8 +153,10 @@ class _AssetPageState extends State<AssetPage> {
               if (widget.service.plugin.basic.isTestNet) {
                 networkName = '${networkName.split('-')[0]}-testnet';
               }
-              final snLink =
-                  'https://$networkName.subscan.io/account/${widget.service.keyring.current.address}';
+              final snLink = networkName == 'xxnetwork' ||
+                      networkName == 'protonet'
+                  ? 'http://subscan.xxnetwork.asia:4399/account/${widget.service.keyring.current.address}'
+                  : 'https://$networkName.subscan.io/account/${widget.service.keyring.current.address}';
               UI.launchURL(snLink);
               Navigator.of(context).pop();
             },
