@@ -48,6 +48,12 @@ abstract class _AccountStore with Store {
     newAccount.key = key;
   }
 
+  /// ######
+  @action
+  void setNewQSAccountKey(String key) {
+    newAccount.qskey = key;
+  }
+
   @action
   void resetNewAccount() {
     newAccount = AccountCreate();
@@ -117,4 +123,7 @@ abstract class _AccountCreate with Store {
 
   @observable
   String key = '';
+
+  @observable
+  String qskey = '';
 }

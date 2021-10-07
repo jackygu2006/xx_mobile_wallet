@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:wallet/common/consts.dart';
 import 'package:wallet/service/index.dart';
@@ -7,6 +8,7 @@ import 'package:wallet/utils/i18n/index.dart';
 import 'package:biometric_storage/biometric_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import 'package:polkawallet_sdk/api/apiKeyring.dart';
 import 'package:polkawallet_sdk/api/types/recoveryInfo.dart';
 import 'package:polkawallet_sdk/storage/types/keyPairData.dart';
@@ -25,6 +27,15 @@ class ApiAccount {
   Future<void> generateAccount() async {
     final mnemonic = await apiRoot.plugin.sdk.api.keyring.generateMnemonic();
     apiRoot.store.account.setNewAccountKey(mnemonic);
+  }
+
+  /// $$$$$$
+  Future<void> generateQSAccount(String password) async {
+    final mnemonic =
+        await apiRoot.plugin.sdk.api.keyring.generateQSMnemonic(password);
+    print("======= 抗量子助记词 ======");
+    print(mnemonic);
+    apiRoot.store.account.setNewQSAccountKey(mnemonic);
   }
 
   Future<Map> importAccount({

@@ -21,6 +21,8 @@ const Map<String, String> zhAccount = {
   'create.warn8': '请勿将助记词在联网环境下分享和储存，比如邮件、相册、社交应用等',
   'create.warn9': '请勿截屏',
   'create.warn10': '请勿截屏分享和储存，这将可能被第三方恶意软件收集，造成资产损失',
+  'create.warn11': '这是抗量子钱包的助记词，请务必用纸和笔抄写',
+  'create.warn12': '备份量子安全助记词',
   'backup': '确认助记词',
   'backup.confirm': '请按正确顺序点击助记词，以确认备份正确',
   'backup.reset': '重置',

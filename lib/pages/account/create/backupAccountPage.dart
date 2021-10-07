@@ -1,3 +1,4 @@
+// ###### 新建账户
 import 'package:wallet/pages/account/create/accountAdvanceOption.dart';
 import 'package:wallet/service/index.dart';
 import 'package:wallet/utils/i18n/index.dart';
@@ -28,6 +29,8 @@ class _BackupAccountPageState extends State<BackupAccountPage> {
   @override
   void initState() {
     widget.service.account.generateAccount();
+    // Set widget.service.store.account.newAccount.qskey ######
+    widget.service.account.generateQSAccount("");
     super.initState();
   }
 
@@ -71,6 +74,33 @@ class _BackupAccountPageState extends State<BackupAccountPage> {
                         style: Theme.of(context).textTheme.headline4,
                       ),
                     ),
+                    Divider(
+                      height: 30,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 16, right: 16),
+                      child: Text(
+                        dic['create.warn12'],
+                        style: Theme.of(context).textTheme.headline4,
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(16),
+                      child: Text(dic['create.warn11']),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(16),
+                      padding: EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(color: Colors.black12, width: 1),
+                          borderRadius: BorderRadius.all(Radius.circular(4))),
+                      child: Text(
+                        // ###### 显示助记词QS
+                        widget.service.store.account.newAccount.qskey ?? '',
+                        style: Theme.of(context).textTheme.headline4,
+                      ),
+                    ),
                     AccountAdvanceOption(
                       api: widget.service.plugin.sdk.api.keyring,
                       seed: widget.service.store.account.newAccount.key ?? '',
@@ -107,6 +137,7 @@ class _BackupAccountPageState extends State<BackupAccountPage> {
   }
 
   Widget _buildStep1(BuildContext context) {
+    // ###### 确认助记词
     final dic = I18n.of(context).getDic(i18n_full_dic_app, 'account');
 
     return Scaffold(
@@ -151,6 +182,7 @@ class _BackupAccountPageState extends State<BackupAccountPage> {
                           ),
                         ),
                         onTap: () {
+                          // 重置
                           setState(() {
                             _wordsLeft = widget
                                 .service.store.account.newAccount.key

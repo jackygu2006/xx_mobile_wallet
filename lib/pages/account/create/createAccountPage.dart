@@ -148,6 +148,11 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   Text(dic['create.warn5']),
                   Container(
                     padding: EdgeInsets.only(bottom: 16, top: 32),
+                    child: Text(dic['create.warn12'], style: theme.headline4),
+                  ),
+                  Text(dic['create.warn11']),
+                  Container(
+                    padding: EdgeInsets.only(bottom: 16, top: 32),
                     child: Text(dic['create.warn6'], style: theme.headline4),
                   ),
                   Container(

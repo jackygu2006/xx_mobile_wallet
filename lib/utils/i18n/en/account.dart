@@ -13,7 +13,7 @@ const Map<String, String> enAccount = {
   'create.password2.error': 'Inconsistent passwords',
   'create.warn1': 'Backup prom',
   'create.warn2': 'Getting a mnemonic equals ownership of a wallet asset',
-  'create.warn3': 'Backup mnemonic',
+  'create.warn3': 'Backup Standard mnemonic',
   'create.warn4': 'Use paper and pen to correctly copy mnemonics',
   'create.warn5':
       'If your phone is lost, stolen or damaged, the mnemonic will restore your assets',
@@ -24,6 +24,9 @@ const Map<String, String> enAccount = {
   'create.warn9': 'Do not take screenshots',
   'create.warn10':
       'Do not take screenshots, which may be collected by third-party malware, resulting in asset loss',
+  'create.warn11':
+      'This seed for Quantum Secured Wallet, please write down and keep safely',
+  'create.warn12': 'Backup Quantum Secured mnemonics',
   'backup': 'Confirm the mnemonic',
   'backup.confirm':
       'Please click on the mnemonic in the correct order to confirm that the backup is correct',

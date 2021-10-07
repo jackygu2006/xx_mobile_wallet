@@ -214,7 +214,7 @@ class _WalletAppState extends State<WalletApp> {
     Object types = {};
     if (_service.plugin.basic.name == "xxnetwork" ||
         _service.plugin.basic.name == "protonet") {
-      // 需要定义xxnetwork的配置，即NetworkParams $$$$$$
+      // 需要定义xxnetwork的配置，即NetworkParams
       node.name = _service.plugin.basic.name;
       node.endpoint = 'wss://protonet.xxlabs.net';
       node.ss58 = 42;
