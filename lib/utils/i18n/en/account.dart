@@ -86,4 +86,5 @@ const Map<String, String> enAccount = {
   'plugin.note': 'Maintained by ',
   'plugin.team': ' team.',
   'plugin.disable': 'This plugin is outdated and needs fix from maintainer.',
+  'loading': 'Loading...',
 };

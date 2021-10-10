@@ -117,7 +117,7 @@ class _BackupAccountPageState extends State<BackupAccountPage> {
                       child: Text(
                         _addNoForKey(
                                 widget.service.store.account.newAccount.key) ??
-                            'Loading...',
+                            dic['loading'],
                         style: Theme.of(context).textTheme.headline4,
                       ),
                     ),
@@ -146,7 +146,7 @@ class _BackupAccountPageState extends State<BackupAccountPage> {
                         // 显示助记词QS
                         _addNoForKey(widget
                                 .service.store.account.newAccount.qskey) ??
-                            'Loading...',
+                            dic['loading'],
                         style: Theme.of(context).textTheme.headline4,
                       ),
                     ),
@@ -232,7 +232,6 @@ class _BackupAccountPageState extends State<BackupAccountPage> {
                           ),
                         ),
                         onTap: () {
-                          // 重置
                           _resetWordsSelect();
                           setState(() {
                             _wordsLeft = widget
@@ -259,9 +258,9 @@ class _BackupAccountPageState extends State<BackupAccountPage> {
                     _resetWordsSelect();
                     setState(() {
                       _step = 2;
-                      // _wordsSelected = <String>[];
                       _wordsLeft = widget.service.store.account.newAccount.qskey
                           .split(' ');
+                      _randomNumbers = _getRandomList();
                     });
                   }
                 },
