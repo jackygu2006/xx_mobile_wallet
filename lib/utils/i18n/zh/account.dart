@@ -13,7 +13,7 @@ const Map<String, String> zhAccount = {
   'create.password2.error': '密码不一致',
   'create.warn1': '备份提示',
   'create.warn2': '获得助记词等于拥有钱包资产所有权',
-  'create.warn3': '备份助记词',
+  'create.warn3': '备份标准助记词',
   'create.warn4': '使用纸和笔正确抄写助记词',
   'create.warn5': '如果你的手机丢失、被盗、损坏，助记词将可以恢复你的资产',
   'create.warn6': '离线保存',

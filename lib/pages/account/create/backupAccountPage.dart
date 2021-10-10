@@ -1,4 +1,6 @@
-// ###### 新建账户
+// 新建账户
+import 'dart:math';
+
 import 'package:wallet/pages/account/create/accountAdvanceOption.dart';
 import 'package:wallet/service/index.dart';
 import 'package:wallet/utils/i18n/index.dart';
@@ -20,18 +22,57 @@ class BackupAccountPage extends StatefulWidget {
 }
 
 class _BackupAccountPageState extends State<BackupAccountPage> {
+  // ignore: non_constant_identifier_names
+  final int TotalConfirms = 5;
   AccountAdvanceOptionParams _advanceOptions = AccountAdvanceOptionParams();
   int _step = 0;
+  int currentConfirmId = 0;
 
   List<String> _wordsSelected;
   List<String> _wordsLeft;
+  List _randomNumbers;
 
   @override
   void initState() {
     // widget.service.account.generateAccount();
-    // Set widget.service.store.account.newAccount.qskey ######
+    // Set widget.service.store.account.newAccount.qskey
     widget.service.account.generateQSAccount("");
     super.initState();
+  }
+
+  void _resetWordsSelect() {
+    setState(() => _wordsSelected = ['', '', '', '', '', '']);
+    currentConfirmId = 0;
+  }
+
+  String _addNoForKey(String key) {
+    List<String> list = key.split(" ");
+    List<String> newList = [];
+    for (var i = 0; i < list.length; i++) {
+      newList.add((i + 1).toString() + '.' + list[i]);
+    }
+    return newList.join("     ");
+  }
+
+  List _getRandomList() {
+    var rng = new Random();
+    Set smm = new Set();
+    while (smm.length < 24) smm.add(rng.nextInt(24));
+    return smm.toList().sublist(0, TotalConfirms);
+  }
+
+  bool _checkKeys(String key) {
+    final List<String> keyList = key.split(' ');
+    bool result = true;
+    for (var i = 0; i < TotalConfirms; i++) {
+      if (_wordsSelected[i] == keyList[_randomNumbers[i]])
+        continue;
+      else {
+        result = false;
+        break;
+      }
+    }
+    return result;
   }
 
   Widget _buildStep0(BuildContext context) {
@@ -70,7 +111,9 @@ class _BackupAccountPageState extends State<BackupAccountPage> {
                           border: Border.all(color: Colors.black12, width: 1),
                           borderRadius: BorderRadius.all(Radius.circular(4))),
                       child: Text(
-                        widget.service.store.account.newAccount.key ?? '',
+                        _addNoForKey(
+                                widget.service.store.account.newAccount.key) ??
+                            '',
                         style: Theme.of(context).textTheme.headline4,
                       ),
                     ),
@@ -96,8 +139,10 @@ class _BackupAccountPageState extends State<BackupAccountPage> {
                           border: Border.all(color: Colors.black12, width: 1),
                           borderRadius: BorderRadius.all(Radius.circular(4))),
                       child: Text(
-                        // ###### 显示助记词QS
-                        widget.service.store.account.newAccount.qskey ?? '',
+                        // 显示助记词QS
+                        _addNoForKey(widget
+                                .service.store.account.newAccount.qskey) ??
+                            '',
                         style: Theme.of(context).textTheme.headline4,
                       ),
                     ),
@@ -120,11 +165,12 @@ class _BackupAccountPageState extends State<BackupAccountPage> {
                       .getDic(i18n_full_dic_ui, 'common')['next'],
                   onPressed: () {
                     if (_advanceOptions.error ?? false) return;
+                    _resetWordsSelect();
                     setState(() {
                       _step = 1;
-                      _wordsSelected = <String>[];
                       _wordsLeft = widget.service.store.account.newAccount.key
                           .split(' ');
+                      _randomNumbers = _getRandomList();
                     });
                   },
                 ),
@@ -183,30 +229,18 @@ class _BackupAccountPageState extends State<BackupAccountPage> {
                         ),
                         onTap: () {
                           // 重置
+                          _resetWordsSelect();
                           setState(() {
                             _wordsLeft = widget
                                 .service.store.account.newAccount.key
                                 .split(' ');
-                            _wordsSelected = [];
+                            _randomNumbers = _getRandomList();
                           });
                         },
                       )
                     ],
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(
-                          color: Colors.black12,
-                          width: 1,
-                        ),
-                        borderRadius: BorderRadius.all(Radius.circular(4))),
-                    padding: EdgeInsets.all(16),
-                    child: Text(
-                      _wordsSelected.join(' ') ?? '',
-                      style: Theme.of(context).textTheme.headline4,
-                    ),
-                  ),
+                  _buildConfirmBox(),
                   _buildWordsButtons(),
                 ],
               ),
@@ -217,11 +251,11 @@ class _BackupAccountPageState extends State<BackupAccountPage> {
                 text:
                     I18n.of(context).getDic(i18n_full_dic_ui, 'common')['next'],
                 onPressed: () {
-                  if (_wordsSelected.join(' ') ==
-                      widget.service.store.account.newAccount.key) {
+                  if (_checkKeys(widget.service.store.account.newAccount.key)) {
+                    _resetWordsSelect();
                     setState(() {
                       _step = 2;
-                      _wordsSelected = <String>[];
+                      // _wordsSelected = <String>[];
                       _wordsLeft = widget.service.store.account.newAccount.qskey
                           .split(' ');
                     });
@@ -282,30 +316,17 @@ class _BackupAccountPageState extends State<BackupAccountPage> {
                             ),
                           ),
                           onTap: () {
+                            _resetWordsSelect();
                             setState(() {
                               _wordsLeft = widget
                                   .service.store.account.newAccount.qskey
                                   .split(' ');
-                              _wordsSelected = [];
+                              _randomNumbers = _getRandomList();
                             });
                           },
                         ),
                       ]),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      border: Border.all(
-                        color: Colors.black12,
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.all(Radius.circular(4)),
-                    ),
-                    padding: EdgeInsets.all(16),
-                    child: Text(
-                      _wordsSelected.join(' ') ?? '',
-                      style: Theme.of(context).textTheme.headline4,
-                    ),
-                  ),
+                  _buildConfirmBox(),
                   _buildWordsButtons(),
                 ],
               ),
@@ -315,10 +336,10 @@ class _BackupAccountPageState extends State<BackupAccountPage> {
               child: RoundedButton(
                 text:
                     I18n.of(context).getDic(i18n_full_dic_ui, 'common')['next'],
-                onPressed: _wordsSelected.join(' ') ==
-                        widget.service.store.account.newAccount.qskey
-                    ? () => Navigator.of(context).pop(_advanceOptions)
-                    : null,
+                onPressed: () => {
+                  if (_checkKeys(widget.service.store.account.newAccount.qskey))
+                    Navigator.of(context).pop(_advanceOptions)
+                },
               ),
             )
           ],
@@ -327,41 +348,41 @@ class _BackupAccountPageState extends State<BackupAccountPage> {
     );
   }
 
+  Widget _buildConfirmBox() {
+    List<Container> _containerList = [];
+    print(_randomNumbers);
+    for (var i = 0; i < TotalConfirms; i++) {
+      _containerList.add(
+        new Container(
+          decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border.all(
+                color: Colors.black12,
+                width: 1,
+              ),
+              borderRadius: BorderRadius.all(Radius.circular(4))),
+          padding: EdgeInsets.fromLTRB(16, 16, 16, 10),
+          margin: EdgeInsets.all(5),
+          width: 400,
+          child: Text(
+            (_randomNumbers[i] + 1).toString() +
+                ". " +
+                (_wordsSelected[i] ?? ''),
+            style: Theme.of(context).textTheme.headline4,
+          ),
+        ),
+      );
+    }
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: _containerList);
+  }
+
   Widget _buildWordsButtons() {
     if (_wordsLeft.length > 0) {
       _wordsLeft.sort();
     }
 
-    // List<Widget> rows = <Widget>[];
-    // for (var r = 0; r * 3 < _wordsLeft.length; r++) {
-    //   if (_wordsLeft.length > r * 3) {
-    //     rows.add(Row(
-    //       children: _wordsLeft
-    //           .getRange(
-    //               r * 3,
-    //               _wordsLeft.length > (r + 1) * 3
-    //                   ? (r + 1) * 3
-    //                   : _wordsLeft.length)
-    //           .map(
-    //             (i) => Container(
-    //               padding: EdgeInsets.only(left: 4, right: 4),
-    //               child: RaisedButton(
-    //                 child: Text(
-    //                   i,
-    //                 ),
-    //                 onPressed: () {
-    //                   setState(() {
-    //                     _wordsLeft.remove(i);
-    //                     _wordsSelected.add(i);
-    //                   });
-    //                 },
-    //               ),
-    //             ),
-    //           )
-    //           .toList(),
-    //     ));
-    //   }
-    // }
     return Container(
       padding: EdgeInsets.only(top: 16),
       child: Wrap(
@@ -376,8 +397,11 @@ class _BackupAccountPageState extends State<BackupAccountPage> {
                     ),
                     onPressed: () {
                       setState(() {
-                        _wordsLeft.remove(e);
-                        _wordsSelected.add(e);
+                        if (currentConfirmId < TotalConfirms) {
+                          _wordsLeft.remove(e);
+                          _wordsSelected[currentConfirmId++] = e;
+                        }
+                        print(_wordsSelected);
                       });
                     },
                   ),
