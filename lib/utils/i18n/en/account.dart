@@ -27,7 +27,8 @@ const Map<String, String> enAccount = {
   'create.warn11':
       'This seed for Quantum Secured Wallet, please write down and keep safely',
   'create.warn12': 'Backup Quantum Secured mnemonics',
-  'backup': 'Confirm the mnemonic',
+  'backup': '1. Confirm the standard mnemonic',
+  'backupQS': '2. Confirm the Quantum Secured mnemonic',
   'backup.confirm':
       'Please click on the mnemonic in the correct order to confirm that the backup is correct',
   'backup.reset': 'Reset',

@@ -28,7 +28,7 @@ class _BackupAccountPageState extends State<BackupAccountPage> {
 
   @override
   void initState() {
-    widget.service.account.generateAccount();
+    // widget.service.account.generateAccount();
     // Set widget.service.store.account.newAccount.qskey ######
     widget.service.account.generateQSAccount("");
     super.initState();
@@ -137,7 +137,7 @@ class _BackupAccountPageState extends State<BackupAccountPage> {
   }
 
   Widget _buildStep1(BuildContext context) {
-    // ###### 确认助记词
+    // 确认标准助记词
     final dic = I18n.of(context).getDic(i18n_full_dic_app, 'account');
 
     return Scaffold(
@@ -216,12 +216,111 @@ class _BackupAccountPageState extends State<BackupAccountPage> {
               child: RoundedButton(
                 text:
                     I18n.of(context).getDic(i18n_full_dic_ui, 'common')['next'],
+                onPressed: () {
+                  if (_wordsSelected.join(' ') ==
+                      widget.service.store.account.newAccount.key) {
+                    setState(() {
+                      _step = 2;
+                      _wordsSelected = <String>[];
+                      _wordsLeft = widget.service.store.account.newAccount.qskey
+                          .split(' ');
+                    });
+                  }
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildStep2(BuildContext context) {
+    // 确认抗量子助记词
+    final dic = I18n.of(context).getDic(i18n_full_dic_app, 'account');
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(dic['create']),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            setState(() {
+              _step = 1;
+            });
+          },
+        ),
+      ),
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Expanded(
+              child: ListView(
+                padding: EdgeInsets.all(16),
+                children: <Widget>[
+                  Text(
+                    dic['backupQS'],
+                    style: Theme.of(context).textTheme.headline4,
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(16),
+                    child: Text(
+                      dic['backup.confirm'],
+                    ),
+                  ),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        GestureDetector(
+                          child: Container(
+                            padding: EdgeInsets.all(8),
+                            child: Text(
+                              dic['backup.reset'],
+                              style:
+                                  TextStyle(fontSize: 14, color: Colors.pink),
+                            ),
+                          ),
+                          onTap: () {
+                            setState(() {
+                              _wordsLeft = widget
+                                  .service.store.account.newAccount.qskey
+                                  .split(' ');
+                              _wordsSelected = [];
+                            });
+                          },
+                        ),
+                      ]),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(
+                        color: Colors.black12,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(4)),
+                    ),
+                    padding: EdgeInsets.all(16),
+                    child: Text(
+                      _wordsSelected.join(' ') ?? '',
+                      style: Theme.of(context).textTheme.headline4,
+                    ),
+                  ),
+                  _buildWordsButtons(),
+                ],
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.all(16),
+              child: RoundedButton(
+                text:
+                    I18n.of(context).getDic(i18n_full_dic_ui, 'common')['next'],
                 onPressed: _wordsSelected.join(' ') ==
-                        widget.service.store.account.newAccount.key
+                        widget.service.store.account.newAccount.qskey
                     ? () => Navigator.of(context).pop(_advanceOptions)
                     : null,
               ),
-            ),
+            )
           ],
         ),
       ),
@@ -295,6 +394,8 @@ class _BackupAccountPageState extends State<BackupAccountPage> {
         return _buildStep0(context);
       case 1:
         return _buildStep1(context);
+      case 2:
+        return _buildStep2(context);
       default:
         return Container();
     }

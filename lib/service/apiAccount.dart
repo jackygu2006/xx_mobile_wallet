@@ -29,13 +29,17 @@ class ApiAccount {
     apiRoot.store.account.setNewAccountKey(mnemonic);
   }
 
-  /// $$$$$$
+  /// $$$$$$ 改用抗量子钱包
   Future<void> generateQSAccount(String password) async {
     final mnemonic =
         await apiRoot.plugin.sdk.api.keyring.generateQSMnemonic(password);
+    print("======= 普通助记词 ======");
+    print(mnemonic.output);
     print("======= 抗量子助记词 ======");
-    print(mnemonic);
-    apiRoot.store.account.setNewQSAccountKey(mnemonic);
+    print(mnemonic.mnemonic);
+
+    apiRoot.store.account.setNewAccountKey(mnemonic.output);
+    apiRoot.store.account.setNewQSAccountKey(mnemonic.mnemonic);
   }
 
   Future<Map> importAccount({
@@ -57,7 +61,7 @@ class ApiAccount {
       keyType: keyType,
       cryptoType: cryptoType,
       derivePath: derivePath,
-      key: acc.key,
+      key: acc.key, // Only import standard key, no need quantum secured key
       name: acc.name,
       password: acc.password,
     );
