@@ -365,7 +365,7 @@ class _KarCrowdLoanPageState extends State<KarCrowdLoanPage> {
                 ? null
                 : CountdownPanel(
                     cardColor: Theme.of(context).cardColor,
-                    cardTextColor: Colors.pink,
+                    cardTextColor: Colors.grey,
                     textColor: Colors.orangeAccent,
                     endTime: endTime,
                   ),

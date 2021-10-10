@@ -39,8 +39,8 @@ class _AssetPageState extends State<AssetPage> {
   final GlobalKey<RefreshIndicatorState> _refreshKey =
       new GlobalKey<RefreshIndicatorState>();
 
-  final colorIn = Color(0xFF62CFE4);
-  final colorOut = Color(0xFF3394FF);
+  final colorIn = Color(0xFF4DB6AC);
+  final colorOut = Color(0xFF26A69A);
 
   bool _loading = false;
 

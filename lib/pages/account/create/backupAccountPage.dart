@@ -46,12 +46,16 @@ class _BackupAccountPageState extends State<BackupAccountPage> {
   }
 
   String _addNoForKey(String key) {
-    List<String> list = key.split(" ");
-    List<String> newList = [];
-    for (var i = 0; i < list.length; i++) {
-      newList.add((i + 1).toString() + '.' + list[i]);
+    if (key != "") {
+      List<String> list = key.split(" ");
+      List<String> newList = [];
+      for (var i = 0; i < list.length; i++) {
+        newList.add((i + 1).toString() + '.' + list[i]);
+      }
+      return newList.join("     ");
+    } else {
+      return null;
     }
-    return newList.join("     ");
   }
 
   List _getRandomList() {
@@ -113,7 +117,7 @@ class _BackupAccountPageState extends State<BackupAccountPage> {
                       child: Text(
                         _addNoForKey(
                                 widget.service.store.account.newAccount.key) ??
-                            '',
+                            'Loading...',
                         style: Theme.of(context).textTheme.headline4,
                       ),
                     ),
@@ -142,7 +146,7 @@ class _BackupAccountPageState extends State<BackupAccountPage> {
                         // 显示助记词QS
                         _addNoForKey(widget
                                 .service.store.account.newAccount.qskey) ??
-                            '',
+                            'Loading...',
                         style: Theme.of(context).textTheme.headline4,
                       ),
                     ),
@@ -224,7 +228,7 @@ class _BackupAccountPageState extends State<BackupAccountPage> {
                           padding: EdgeInsets.all(8),
                           child: Text(
                             dic['backup.reset'],
-                            style: TextStyle(fontSize: 14, color: Colors.pink),
+                            style: TextStyle(fontSize: 14, color: Colors.grey),
                           ),
                         ),
                         onTap: () {
@@ -312,7 +316,7 @@ class _BackupAccountPageState extends State<BackupAccountPage> {
                             child: Text(
                               dic['backup.reset'],
                               style:
-                                  TextStyle(fontSize: 14, color: Colors.pink),
+                                  TextStyle(fontSize: 14, color: Colors.grey),
                             ),
                           ),
                           onTap: () {
