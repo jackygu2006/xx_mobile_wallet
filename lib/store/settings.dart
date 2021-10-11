@@ -19,7 +19,7 @@ abstract class _SettingsStore with Store {
   String localeCode = '';
 
   @observable
-  String network = 'polkadot';
+  String network = 'protonet'; // $$$$$$ 启动默认的plugin
 
   @observable
   Map liveModules = Map();

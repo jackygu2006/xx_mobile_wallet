@@ -38,10 +38,8 @@ void main() async {
   Map<String, bool> a = {"visible": true, 'enabled': true};
   pluginsConfig['protonet'] = a;
   pluginsConfig['xxnetwork'] = a;
+  print("=======");
 
-  print(pluginsConfig);
-  print(plugins);
-  // {polkadot: {visible: true, enabled: true}, kusama: {visible: true, enabled: true}, karura: {visible: true, enabled: true}, statemine: {visible: true, enabled: true}, acala-tc6: {visible: true, enabled: true}, laminar-tc3: {visible: true, enabled: true}, edgeware: {visible: true, enabled: true}, chainx: {visible: true, enabled: true}, bifrost: {visible: true, enabled: true}}
   if (pluginsConfig != null) {
     plugins.removeWhere((i) => !pluginsConfig[i.basic.name]['visible']);
   }

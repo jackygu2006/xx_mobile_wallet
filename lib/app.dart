@@ -382,7 +382,7 @@ class _WalletAppState extends State<WalletApp> {
         _changeLang(Localizations.localeOf(context).toString());
       }
 
-      _checkUpdate(context);
+      // _checkUpdate(context); $$$$$$ 暂时不检查版本更新
       await _checkJSCodeUpdate(context, service.plugin, needReload: false);
 
       final useLocalJS = WalletApi.getPolkadotJSVersion(

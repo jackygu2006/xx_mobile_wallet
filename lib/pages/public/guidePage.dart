@@ -77,6 +77,7 @@ class _GuidePageState extends State<GuidePage> {
                                 margin: EdgeInsets.fromLTRB(24, 16, 24, 0),
                                 child: RoundedButton(
                                   text: dic['guide.enter'],
+                                  color: Color(0xFF009688),
                                   onPressed: () =>
                                       Navigator.of(context).pop(true),
                                 ),

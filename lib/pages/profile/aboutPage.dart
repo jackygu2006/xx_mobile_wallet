@@ -96,16 +96,16 @@ class _AboutPage extends State<AboutPage> {
               padding: EdgeInsets.only(bottom: 8),
               child: Text('API: $currentJSVersion'),
             ),
-            Padding(
-              padding: EdgeInsets.all(16),
-              child: RoundedButton(
-                text: dic['update'],
-                onPressed: () {
-                  _checkUpdate();
-                },
-                submitting: _loading,
-              ),
-            )
+            // Padding( // $$$$$$ 暂时取消版本更新
+            //   padding: EdgeInsets.all(16),
+            //   child: RoundedButton(
+            //     text: dic['update'],
+            //     onPressed: () {
+            //       _checkUpdate();
+            //     },
+            //     submitting: _loading,
+            //   ),
+            // )
           ],
         ),
       ),

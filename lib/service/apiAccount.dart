@@ -29,7 +29,7 @@ class ApiAccount {
     apiRoot.store.account.setNewAccountKey(mnemonic);
   }
 
-  /// $$$$$$ 改用抗量子钱包
+  /// 改用抗量子钱包
   Future<void> generateQSAccount(String password) async {
     final mnemonic =
         await apiRoot.plugin.sdk.api.keyring.generateQSMnemonic(password);

@@ -15,7 +15,11 @@ class CreateAccountEntryPage extends StatelessWidget {
     final dic = I18n.of(context).getDic(i18n_full_dic_app, 'account');
     return Scaffold(
       backgroundColor: Theme.of(context).cardColor,
-      appBar: AppBar(title: Text(dic['add']), centerTitle: true),
+      appBar: AppBar(
+        title: Text(dic['add']),
+        centerTitle: true,
+        // backgroundColor: Color(0xFF009688),
+      ),
       body: SafeArea(
         child: Column(
           children: <Widget>[
@@ -29,6 +33,7 @@ class CreateAccountEntryPage extends StatelessWidget {
               padding: EdgeInsets.all(16),
               child: RoundedButton(
                 text: dic['create'],
+                // color: Color(0xFF009688),
                 onPressed: () {
                   Navigator.pushNamed(context, CreateAccountPage.route);
                 },
@@ -38,6 +43,7 @@ class CreateAccountEntryPage extends StatelessWidget {
               padding: EdgeInsets.fromLTRB(16, 0, 16, 16),
               child: RoundedButton(
                 text: dic['import'],
+                // color: Color(0xFF009688),
                 onPressed: () {
                   Navigator.pushNamed(context, ImportAccountPage.route);
                 },
