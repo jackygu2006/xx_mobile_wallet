@@ -500,45 +500,45 @@ class _AssetsState extends State<AssetsPage> {
                               ),
                             )
                           : Container(height: 24),
-                      FutureBuilder(
-                        future: _fetchAnnouncements(),
-                        builder: (_, AsyncSnapshot<List> snapshot) {
-                          final String lang =
-                              I18n.of(context).locale.toString().contains('zh')
-                                  ? 'zh'
-                                  : 'en';
-                          if (!snapshot.hasData || snapshot.data.length == 0) {
-                            return Container();
-                          }
-                          final Map announce = snapshot.data[0][lang];
-                          return GestureDetector(
-                            child: Container(
-                              margin: EdgeInsets.only(bottom: 16),
-                              child: Row(
-                                children: <Widget>[
-                                  Expanded(
-                                    child: TextTag(
-                                      announce['title'],
-                                      padding:
-                                          EdgeInsets.fromLTRB(16, 12, 16, 12),
-                                      color: Colors.lightGreen,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                            onTap: () {
-                              Navigator.of(context).pushNamed(
-                                AnnouncementPage.route,
-                                arguments: AnnouncePageParams(
-                                  title: announce['title'],
-                                  link: announce['link'],
-                                ),
-                              );
-                            },
-                          );
-                        },
-                      ),
+                      // FutureBuilder(
+                      //   future: _fetchAnnouncements(),
+                      //   builder: (_, AsyncSnapshot<List> snapshot) {
+                      //     final String lang =
+                      //         I18n.of(context).locale.toString().contains('zh')
+                      //             ? 'zh'
+                      //             : 'en';
+                      //     if (!snapshot.hasData || snapshot.data.length == 0) {
+                      //       return Container();
+                      //     }
+                      //     final Map announce = snapshot.data[0][lang];
+                      //     return GestureDetector(
+                      //       child: Container(
+                      //         margin: EdgeInsets.only(bottom: 16),
+                      //         child: Row(
+                      //           children: <Widget>[
+                      //             Expanded(
+                      //               child: TextTag(
+                      //                 announce['title'],
+                      //                 padding:
+                      //                     EdgeInsets.fromLTRB(16, 12, 16, 12),
+                      //                 color: Colors.lightGreen,
+                      //               ),
+                      //             )
+                      //           ],
+                      //         ),
+                      //       ),
+                      //       onTap: () {
+                      //         Navigator.of(context).pushNamed(
+                      //           AnnouncementPage.route,
+                      //           arguments: AnnouncePageParams(
+                      //             title: announce['title'],
+                      //             link: announce['link'],
+                      //           ),
+                      //         );
+                      //       },
+                      //     );
+                      //   },
+                      // ),
                       Row(
                         children: [
                           BorderedTitle(

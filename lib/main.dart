@@ -38,7 +38,6 @@ void main() async {
   Map<String, bool> a = {"visible": true, 'enabled': true};
   pluginsConfig['protonet'] = a;
   pluginsConfig['xxnetwork'] = a;
-  print("=======");
 
   if (pluginsConfig != null) {
     plugins.removeWhere((i) => !pluginsConfig[i.basic.name]['visible']);

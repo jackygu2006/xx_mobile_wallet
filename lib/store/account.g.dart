@@ -131,27 +131,27 @@ mixin _$AccountStore on _AccountStore, Store {
   }
 
   @override
-  void setNewAccountKey(String key) {
+  void setNewAccountKey(String key, String qsKey) {
     final _$actionInfo = _$_AccountStoreActionController.startAction(
         name: '_AccountStore.setNewAccountKey');
     try {
-      return super.setNewAccountKey(key);
+      return super.setNewAccountKey(key, qsKey);
     } finally {
       _$_AccountStoreActionController.endAction(_$actionInfo);
     }
   }
 
   // ######
-  @override
-  void setNewQSAccountKey(String key) {
-    final _$actionInfo = _$_AccountStoreActionController.startAction(
-        name: '_AccountStore.setNewQSAccountKey');
-    try {
-      return super.setNewQSAccountKey(key);
-    } finally {
-      _$_AccountStoreActionController.endAction(_$actionInfo);
-    }
-  }
+  // @override
+  // void setNewQSAccountKey(String key) {
+  //   final _$actionInfo = _$_AccountStoreActionController.startAction(
+  //       name: '_AccountStore.setNewQSAccountKey');
+  //   try {
+  //     return super.setNewQSAccountKey(key);
+  //   } finally {
+  //     _$_AccountStoreActionController.endAction(_$actionInfo);
+  //   }
+  // }
 
   @override
   void resetNewAccount() {
@@ -318,6 +318,7 @@ mixin _$AccountCreate on _AccountCreate, Store {
 name: ${name},
 password: ${password},
 key: ${key}
+qskey: ${qskey}
     ''';
   }
 }

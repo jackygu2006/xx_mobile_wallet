@@ -68,6 +68,21 @@ class ExportAccountPage extends StatelessWidget {
           ),
           FutureBuilder(
             future: service.keyring.store.checkSeedExist(
+                KeyType.mnemonic, service.keyring.current.pubKey),
+            builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+              if (snapshot.hasData && snapshot.data == true) {
+                return ListTile(
+                  title: Text(dicAcc['qsmnemonic']),
+                  trailing: Icon(Icons.arrow_forward_ios, size: 18),
+                  onTap: () => _onExport(context),
+                );
+              } else {
+                return Container();
+              }
+            },
+          ),
+          FutureBuilder(
+            future: service.keyring.store.checkSeedExist(
                 KeyType.rawSeed, service.keyring.current.pubKey),
             builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
               if (snapshot.hasData && snapshot.data == true) {

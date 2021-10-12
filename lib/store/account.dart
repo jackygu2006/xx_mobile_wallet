@@ -44,15 +44,16 @@ abstract class _AccountStore with Store {
   }
 
   @action
-  void setNewAccountKey(String key) {
+  void setNewAccountKey(String key, String qsKey) {
     newAccount.key = key;
+    newAccount.qskey = qsKey;
   }
 
   /// ######
-  @action
-  void setNewQSAccountKey(String key) {
-    newAccount.qskey = key;
-  }
+  // @action
+  // void setNewQSAccountKey(String key) {
+  //   newAccount.qskey = key;
+  // }
 
   @action
   void resetNewAccount() {

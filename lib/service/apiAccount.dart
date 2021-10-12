@@ -26,7 +26,7 @@ class ApiAccount {
 
   Future<void> generateAccount() async {
     final mnemonic = await apiRoot.plugin.sdk.api.keyring.generateMnemonic();
-    apiRoot.store.account.setNewAccountKey(mnemonic);
+    apiRoot.store.account.setNewAccountKey(mnemonic, '');
   }
 
   /// 改用抗量子钱包
@@ -38,8 +38,8 @@ class ApiAccount {
     print("======= 抗量子助记词 ======");
     print(mnemonic.mnemonic);
 
-    apiRoot.store.account.setNewAccountKey(mnemonic.output);
-    apiRoot.store.account.setNewQSAccountKey(mnemonic.mnemonic);
+    apiRoot.store.account.setNewAccountKey(mnemonic.output, mnemonic.mnemonic);
+    // apiRoot.store.account.setNewQSAccountKey(mnemonic.mnemonic);
   }
 
   Future<Map> importAccount({
@@ -56,6 +56,7 @@ class ApiAccount {
             acc.password.isEmpty)) {
       throw Exception('create account failed');
     }
+    print("====== importAccount ======");
     final res = await apiRoot.plugin.sdk.api.keyring.importAccount(
       apiRoot.keyring,
       keyType: keyType,
@@ -65,6 +66,8 @@ class ApiAccount {
       name: acc.name,
       password: acc.password,
     );
+    print(jsonEncode(res));
+    print("============================");
     return res;
   }
 
@@ -76,6 +79,8 @@ class ApiAccount {
     bool isFromCreatePage = false,
   }) async {
     final acc = apiRoot.store.account.newAccount;
+    print("======= addAccount ========");
+    print(acc.toString());
     if (isFromCreatePage &&
         (acc.name == null ||
             acc.name.isEmpty ||
@@ -83,12 +88,15 @@ class ApiAccount {
             acc.password.isEmpty)) {
       throw Exception('save account failed');
     }
-    final res = await apiRoot.plugin.sdk.api.keyring.addAccount(
+    final KeyPairData res = await apiRoot.plugin.sdk.api.keyring.addAccount(
       apiRoot.keyring,
       keyType: keyType,
       acc: json,
       password: acc.password,
     );
+
+    print(jsonEncode(res));
+    print("============================");
     return res;
   }
 
