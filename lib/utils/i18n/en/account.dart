@@ -2,8 +2,12 @@ const Map<String, String> enAccount = {
   'add': 'Add Account',
   'create': 'Create Account',
   'import': 'Import Account',
-  'mnemonic': 'Standard Mnemonic',
+  'mnemonic.standard': 'Standard Mnemonic',
+  'mnemonic': 'Mnemonic',
   'qsmnemonic': 'Quantum Secured Mnemonic',
+  'exportQsWarning':
+      'You have not import Quantum Secured mnemonic, so you can not export',
+  'qsmnemonic.option': 'Quantum Secured Mnemonic(Optional)',
   'rawSeed': 'Raw Seed',
   'keystore': 'Keystore (json)',
   'create.name': 'Name',

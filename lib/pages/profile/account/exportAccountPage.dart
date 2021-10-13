@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:polkawallet_sdk/api/apiKeyring.dart';
 import 'package:polkawallet_sdk/utils/i18n.dart';
 import 'package:polkawallet_sdk/storage/types/keyPairData.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class ExportAccountPage extends StatelessWidget {
   ExportAccountPage(this.service);
@@ -28,22 +29,29 @@ class ExportAccountPage extends StatelessWidget {
     }
   }
 
-  // ^^^^^^
   Future<void> _onExportQS(BuildContext context) async {
-    final password = await service.account.getPassword(
-      context,
-      service.keyring.current,
-    );
-    if (password != null) {
-      print('^^^^^^^^^^^^^^');
-      print(service.keyring.current.pubKey);
-      print(service.keyring.current.qsPubKey);
-      print(service.keyring.store.currentQSPubKey);
+    print('^^^^^^^^^^^^^^');
+    print(service.keyring.current.pubKey);
+    print(service.keyring.current.qsPubKey);
+    if (service.keyring.current.qsPubKey != null &&
+        service.keyring.current.qsPubKey != "") {
+      final password = await service.account.getPassword(
+        context,
+        service.keyring.current,
+      );
       final seed = await service.plugin.sdk.api.keyring
           .getDecryptedQSSeed(service.keyring, password);
-      print(seed.seed);
-      print('^^^^^^^^^^^^^^');
       Navigator.of(context).pushNamed(ExportResultPage.route, arguments: seed);
+    } else {
+      final dic = I18n.of(context).getDic(i18n_full_dic_app, 'account');
+      Fluttertoast.showToast(
+          msg: dic['exportQsWarning'],
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 2,
+          backgroundColor: Colors.grey,
+          textColor: Colors.white,
+          fontSize: 16.0);
     }
   }
 
@@ -76,7 +84,7 @@ class ExportAccountPage extends StatelessWidget {
             builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
               if (snapshot.hasData && snapshot.data == true) {
                 return ListTile(
-                  title: Text(dicAcc['mnemonic']),
+                  title: Text(dicAcc['mnemonic.standard']),
                   trailing: Icon(Icons.arrow_forward_ios, size: 18),
                   onTap: () => _onExport(context),
                 );

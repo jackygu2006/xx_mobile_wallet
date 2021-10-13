@@ -21,6 +21,7 @@ class ImportAccountForm extends StatefulWidget {
   _ImportAccountFormState createState() => _ImportAccountFormState();
 }
 
+// ignore: todo
 // TODO: add mnemonic word check & selection
 class _ImportAccountFormState extends State<ImportAccountForm> {
   final _keyOptions = [
@@ -37,10 +38,12 @@ class _ImportAccountFormState extends State<ImportAccountForm> {
   final _formKey = GlobalKey<FormState>();
 
   final TextEditingController _keyCtrl = new TextEditingController();
+  final TextEditingController _qsMnemonic = new TextEditingController();
   final TextEditingController _nameCtrl = new TextEditingController();
   final TextEditingController _passCtrl = new TextEditingController();
 
   String _keyCtrlText = '';
+  String _qsMnemonicText = '';
   AccountAdvanceOptionParams _advanceOptions = AccountAdvanceOptionParams();
 
   Future<void> _checkBiometricAuth() async {
@@ -186,6 +189,14 @@ class _ImportAccountFormState extends State<ImportAccountForm> {
     });
   }
 
+  void _onQSKeyChange(String v) {
+    if (_keySelection == 0) {
+      setState(() {
+        _qsMnemonicText = v.trim();
+      });
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -248,8 +259,8 @@ class _ImportAccountFormState extends State<ImportAccountForm> {
                         padding: EdgeInsets.only(left: 16, right: 16),
                         child: TextFormField(
                           decoration: InputDecoration(
-                            hintText: selected,
-                            labelText: selected,
+                            hintText: dic['mnemonic.standard'],
+                            labelText: dic['mnemonic.standard'],
                           ),
                           controller: _keyCtrl,
                           maxLines: 2,
@@ -258,6 +269,22 @@ class _ImportAccountFormState extends State<ImportAccountForm> {
                         ),
                       )
                     : Container(),
+                _keySelection == 0
+                    ? Padding(
+                        padding: EdgeInsets.only(left: 16, right: 16),
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            hintText: dic['qsmnemonic'],
+                            labelText: dic['qsmnemonic.option'],
+                          ),
+                          controller: _qsMnemonic,
+                          maxLines: 2,
+                          // validator: _validateInput,
+                          onChanged: _onQSKeyChange,
+                        ),
+                      )
+                    : Container(),
+                // Import by Keystore
                 _keySelection == 2
                     ? _buildNameAndPassInput()
                     : AccountAdvanceOption(
@@ -274,18 +301,21 @@ class _ImportAccountFormState extends State<ImportAccountForm> {
           ),
         ),
         Container(
+          // Button
           padding: EdgeInsets.all(16),
           child: RoundedButton(
             text: I18n.of(context).getDic(i18n_full_dic_ui, 'common')['next'],
             onPressed: () async {
+              // Next
               if (_formKey.currentState.validate() &&
                   !(_advanceOptions.error ?? false)) {
                 if (_keySelection == 2) {
                   widget.service.store.account.setNewAccount(
                       _nameCtrl.text.trim(), _passCtrl.text.trim());
                 }
-                widget.service.store.account
-                    .setNewAccountKey(_keyCtrl.text.trim(), '');
+                widget.service.store.account.setNewAccountKey(
+                    _keyCtrl.text.trim(), _qsMnemonic.text.trim());
+
                 final saved = await widget.onSubmit({
                   'keyType': _keyOptions[_keySelection],
                   'cryptoType': _advanceOptions.type ?? CryptoType.sr25519,
