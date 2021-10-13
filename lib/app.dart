@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:wallet/common/components/willPopScopWrapper.dart';
 import 'package:wallet/common/consts.dart';
 import 'package:wallet/common/types/pluginDisabled.dart';
@@ -354,6 +356,9 @@ class _WalletAppState extends State<WalletApp> {
 
       final storage = GetStorage(get_storage_container);
       final store = AppStore(storage);
+
+      print('====== _startApp ======');
+      print(jsonEncode(_keyring.current));
       await store.init();
 
       _showGuide(context, storage);

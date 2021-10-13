@@ -62,7 +62,8 @@ class ApiAccount {
       keyType: keyType,
       cryptoType: cryptoType,
       derivePath: derivePath,
-      key: acc.key, // Only import standard key, no need quantum secured key
+      key: acc.key,
+      qskey: acc.qskey,
       name: acc.name,
       password: acc.password,
     );
@@ -80,6 +81,7 @@ class ApiAccount {
   }) async {
     final acc = apiRoot.store.account.newAccount;
     print("======= addAccount ========");
+    print(json);
     print(acc.toString());
     if (isFromCreatePage &&
         (acc.name == null ||

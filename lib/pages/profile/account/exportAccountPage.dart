@@ -28,6 +28,25 @@ class ExportAccountPage extends StatelessWidget {
     }
   }
 
+  // ^^^^^^
+  Future<void> _onExportQS(BuildContext context) async {
+    final password = await service.account.getPassword(
+      context,
+      service.keyring.current,
+    );
+    if (password != null) {
+      print('^^^^^^^^^^^^^^');
+      print(service.keyring.current.pubKey);
+      print(service.keyring.current.qsPubKey);
+      print(service.keyring.store.currentQSPubKey);
+      final seed = await service.plugin.sdk.api.keyring
+          .getDecryptedQSSeed(service.keyring, password);
+      print(seed.seed);
+      print('^^^^^^^^^^^^^^');
+      Navigator.of(context).pushNamed(ExportResultPage.route, arguments: seed);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final dic = I18n.of(context).getDic(i18n_full_dic_app, 'profile');
@@ -74,7 +93,7 @@ class ExportAccountPage extends StatelessWidget {
                 return ListTile(
                   title: Text(dicAcc['qsmnemonic']),
                   trailing: Icon(Icons.arrow_forward_ios, size: 18),
-                  onTap: () => _onExport(context),
+                  onTap: () => _onExportQS(context),
                 );
               } else {
                 return Container();
