@@ -143,14 +143,11 @@ class _WalletAppState extends State<WalletApp> {
 
   void _initWalletConnect() {
     _service.plugin.sdk.api.walletConnect.initClient((WCPairingData proposal) {
-      print('get wc pairing');
       _handleWCPairing(proposal);
     }, (WCPairedData session) {
-      print('get wc session');
       _service.store.account.createWCSession(session);
       _service.store.account.setWCPairing(false);
     }, (WCPayloadData payload) {
-      print('get wc payload');
       _handleWCPayload(payload);
     });
   }
@@ -173,7 +170,6 @@ class _WalletAppState extends State<WalletApp> {
     final res = await Navigator.of(context)
         .pushNamed(WalletConnectSignPage.route, arguments: payload);
     if (res == null) {
-      print('user rejected signing');
       await _service.plugin.sdk.api.walletConnect
           .payloadRespond(payload, error: {
         'code': -32000,
@@ -206,11 +202,8 @@ class _WalletAppState extends State<WalletApp> {
     setState(() {
       _connectedNode = null;
     });
-    print("====== wallet: _startPlugin ======");
-    print(_service.plugin.basic.name);
 
     NetworkParams node = new NetworkParams();
-    print(service.plugin.basic);
     // ignore: deprecated_member_use
     List<NetworkParams> nodes = new List<NetworkParams>();
     Object types = {};
@@ -290,7 +283,6 @@ class _WalletAppState extends State<WalletApp> {
       });
     }
     _service.plugin.sdk.api.account.unsubscribeBalance();
-    print("====== wallet: _changeNode ======");
     final connected =
         await _service.plugin.start(_keyring, [node], registryTypes);
     setState(() {
@@ -357,8 +349,6 @@ class _WalletAppState extends State<WalletApp> {
       final storage = GetStorage(get_storage_container);
       final store = AppStore(storage);
 
-      print('====== _startApp ======');
-      print(jsonEncode(_keyring.current));
       await store.init();
 
       _showGuide(context, storage);

@@ -30,9 +30,6 @@ class ExportAccountPage extends StatelessWidget {
   }
 
   Future<void> _onExportQS(BuildContext context) async {
-    print('^^^^^^^^^^^^^^');
-    print(service.keyring.current.pubKey);
-    print(service.keyring.current.qsPubKey);
     if (service.keyring.current.qsPubKey != null &&
         service.keyring.current.qsPubKey != "") {
       final password = await service.account.getPassword(
@@ -94,8 +91,8 @@ class ExportAccountPage extends StatelessWidget {
             },
           ),
           FutureBuilder(
-            future: service.keyring.store.checkSeedExist(
-                KeyType.mnemonic, service.keyring.current.pubKey),
+            future: service.keyring.store
+                .checkQSSeedExist(service.keyring.current.qsPubKey),
             builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
               if (snapshot.hasData && snapshot.data == true) {
                 return ListTile(

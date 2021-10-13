@@ -33,13 +33,7 @@ class ApiAccount {
   Future<void> generateQSAccount(String password) async {
     final mnemonic =
         await apiRoot.plugin.sdk.api.keyring.generateQSMnemonic(password);
-    print("======= 普通助记词 ======");
-    print(mnemonic.output);
-    print("======= 抗量子助记词 ======");
-    print(mnemonic.mnemonic);
-
     apiRoot.store.account.setNewAccountKey(mnemonic.output, mnemonic.mnemonic);
-    // apiRoot.store.account.setNewQSAccountKey(mnemonic.mnemonic);
   }
 
   Future<Map> importAccount({
@@ -56,7 +50,6 @@ class ApiAccount {
             acc.password.isEmpty)) {
       throw Exception('create account failed');
     }
-    print("====== importAccount ======");
     final res = await apiRoot.plugin.sdk.api.keyring.importAccount(
       apiRoot.keyring,
       keyType: keyType,
@@ -67,8 +60,6 @@ class ApiAccount {
       name: acc.name,
       password: acc.password,
     );
-    print(jsonEncode(res));
-    print("============================");
     return res;
   }
 
@@ -80,8 +71,6 @@ class ApiAccount {
     bool isFromCreatePage = false,
   }) async {
     final acc = apiRoot.store.account.newAccount;
-    print("======= addAccount ========");
-    print(json);
     print(acc.toString());
     if (isFromCreatePage &&
         (acc.name == null ||
@@ -96,9 +85,6 @@ class ApiAccount {
       acc: json,
       password: acc.password,
     );
-
-    print(jsonEncode(res));
-    print("============================");
     return res;
   }
 
