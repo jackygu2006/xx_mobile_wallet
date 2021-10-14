@@ -32,7 +32,6 @@ dependencies:
   update_app: ^0.1.7
   device_info: ^2.0.1
   uni_links: ^0.5.1
-  fluttertoast: ^8.0.8
   # firebase_messaging: ^10.0.5
   # cached_network_image: ^3.0.0
   polkawallet_plugin_kusama:

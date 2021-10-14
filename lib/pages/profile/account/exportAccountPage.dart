@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:polkawallet_sdk/api/apiKeyring.dart';
 import 'package:polkawallet_sdk/utils/i18n.dart';
 import 'package:polkawallet_sdk/storage/types/keyPairData.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class ExportAccountPage extends StatelessWidget {
   ExportAccountPage(this.service);
@@ -41,14 +40,21 @@ class ExportAccountPage extends StatelessWidget {
       Navigator.of(context).pushNamed(ExportResultPage.route, arguments: seed);
     } else {
       final dic = I18n.of(context).getDic(i18n_full_dic_app, 'account');
-      Fluttertoast.showToast(
-          msg: dic['exportQsWarning'],
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 2,
-          backgroundColor: Colors.grey,
-          textColor: Colors.white,
-          fontSize: 16.0);
+      await showCupertinoDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return CupertinoAlertDialog(
+            title: Text(dic['hint']),
+            content: Text(dic['exportQsWarning']),
+            actions: <Widget>[
+              CupertinoDialogAction(
+                child: Text(dic['confirm']),
+                onPressed: () => Navigator.pop(context),
+              )
+            ],
+          );
+        },
+      );
     }
   }
 

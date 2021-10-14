@@ -92,4 +92,7 @@ const Map<String, String> enAccount = {
   'plugin.team': ' team.',
   'plugin.disable': 'This plugin is outdated and needs fix from maintainer.',
   'loading': 'Loading...',
+  'hint': 'Memo',
+  'confirm': 'Confirm',
+  'scan.result': 'Scan Result',
 };

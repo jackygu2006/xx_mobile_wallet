@@ -82,4 +82,7 @@ const Map<String, String> zhAccount = {
   'plugin.team': ' 团队维护。',
   'plugin.disable': '该插件与当前 App 版本不兼容，请等待插件修复。',
   'loading': '加载助记词...',
+  'hint': '提示',
+  'confirm': '确认',
+  'scan.result': '扫码结果',
 };
