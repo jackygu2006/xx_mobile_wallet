@@ -1,4 +1,3 @@
-// 转账与收款页 ######
 import 'package:wallet/common/consts.dart';
 import 'package:wallet/pages/assets/asset/locksDetailPage.dart';
 import 'package:wallet/pages/assets/transfer/detailPage.dart';

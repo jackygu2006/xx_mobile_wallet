@@ -500,6 +500,7 @@ class _AssetsState extends State<AssetsPage> {
                               ),
                             )
                           : Container(height: 24),
+                      // $$$$$$ Cancel Announcement for the time being.
                       // FutureBuilder(
                       //   future: _fetchAnnouncements(),
                       //   builder: (_, AsyncSnapshot<List> snapshot) {

@@ -14,7 +14,6 @@ class CrowdLoanBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final show = connectedNode != null && service.plugin.basic.name == 'kusama';
-
     final fullWidth = MediaQuery.of(context).size.width;
     final cardColor = Theme.of(context).cardColor;
     return !show

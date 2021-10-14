@@ -48,6 +48,7 @@ app.*.map.json
 # Secrets for privacy
 /android/app/key
 /android/app/google-services.json
+/android/app/key.properties
 /android/key.properties
 /ios/GoogleService-Info.plist
 /ios/Podfile.lock

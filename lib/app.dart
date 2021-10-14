@@ -203,23 +203,9 @@ class _WalletAppState extends State<WalletApp> {
       _connectedNode = null;
     });
 
-    NetworkParams node = new NetworkParams();
-    // ignore: deprecated_member_use
-    List<NetworkParams> nodes = new List<NetworkParams>();
-    Object types = {};
-    if (_service.plugin.basic.name == "xxnetwork" ||
-        _service.plugin.basic.name == "protonet") {
-      // 需要定义xxnetwork的配置，即NetworkParams
-      node.name = _service.plugin.basic.name;
-      node.endpoint = 'wss://protonet.xxlabs.net';
-      node.ss58 = 42;
-      nodes = [node];
-      types = registryTypes;
-    } else {
-      nodes = null;
-      types = null;
-    }
-
+    _getConnectNodeParams();
+    print(nodes);
+    print(types);
     final connected = await service.plugin.start(_keyring, nodes, types);
 
     setState(() {
@@ -229,6 +215,24 @@ class _WalletAppState extends State<WalletApp> {
     if (_service.plugin.basic.name == 'karura' ||
         _service.plugin.basic.name == 'acala') {
       _getAcalaModulesConfig();
+    }
+  }
+
+  Object types = {};
+  List<NetworkParams> nodes = [];
+
+  _getConnectNodeParams() {
+    NetworkParams node = new NetworkParams();
+    if (_service.plugin.basic.name == "xxnetwork" ||
+        _service.plugin.basic.name == "protonet") {
+      node.name = _service.plugin.basic.name;
+      node.endpoint = 'wss://protonet.xxlabs.net';
+      node.ss58 = 42;
+      nodes = [node];
+      types = registryTypes;
+    } else {
+      nodes = null;
+      types = null;
     }
   }
 
@@ -283,8 +287,8 @@ class _WalletAppState extends State<WalletApp> {
       });
     }
     _service.plugin.sdk.api.account.unsubscribeBalance();
-    final connected =
-        await _service.plugin.start(_keyring, [node], registryTypes);
+    _getConnectNodeParams();
+    final connected = await _service.plugin.start(_keyring, nodes, types);
     setState(() {
       _connectedNode = connected;
     });
@@ -573,4 +577,10 @@ class _WalletAppState extends State<WalletApp> {
       ),
     );
   }
+}
+
+class ConnectNodeParams {
+  ConnectNodeParams(Object type, List<NetworkParams> nodes);
+  Object types;
+  List<NetworkParams> nodes;
 }

@@ -141,18 +141,6 @@ mixin _$AccountStore on _AccountStore, Store {
     }
   }
 
-  // ######
-  // @override
-  // void setNewQSAccountKey(String key) {
-  //   final _$actionInfo = _$_AccountStoreActionController.startAction(
-  //       name: '_AccountStore.setNewQSAccountKey');
-  //   try {
-  //     return super.setNewQSAccountKey(key);
-  //   } finally {
-  //     _$_AccountStoreActionController.endAction(_$actionInfo);
-  //   }
-  // }
-
   @override
   void resetNewAccount() {
     final _$actionInfo = _$_AccountStoreActionController.startAction(

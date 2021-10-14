@@ -49,12 +49,6 @@ abstract class _AccountStore with Store {
     newAccount.qskey = qsKey;
   }
 
-  /// ######
-  // @action
-  // void setNewQSAccountKey(String key) {
-  //   newAccount.qskey = key;
-  // }
-
   @action
   void resetNewAccount() {
     newAccount = AccountCreate();
