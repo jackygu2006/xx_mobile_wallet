@@ -110,40 +110,40 @@ class AppUI {
                 if (!needUpdate) {
                   return;
                 }
-                if (Platform.isIOS) {
-                  // go to ios download page
-                  UI.launchURL('https://polkawallet.io/#download');
-                } else if (Platform.isAndroid) {
-                  if (buildTarget == BuildTargets.playStore) {
-                    // go to google play page
-                    UI.launchURL(
-                        'https://play.google.com/store/apps/details?id=io.polkawallet.www.polka_wallet');
-                    return;
-                  }
-                  // download apk
-                  // START LISTENING FOR DOWNLOAD PROGRESS REPORTING EVENTS
-                  try {
-                    String url = versions['android']['url'];
-                    UpdateApp.updateApp(url: url, appleId: "1520301768");
-                    showCupertinoDialog(
-                        context: context,
-                        builder: (BuildContext ctx) {
-                          return CupertinoAlertDialog(
-                            title: Text(dic['update.download']),
-                            content: Text(dic['update.download.check']),
-                            actions: [
-                              CupertinoButton(
-                                child: Text(I18n.of(context)
-                                    .getDic(i18n_full_dic_ui, 'common')['ok']),
-                                onPressed: () => Navigator.of(ctx).pop(),
-                              ),
-                            ],
-                          );
-                        });
-                  } catch (e) {
-                    print('Failed to make OTA update. Details: $e');
-                  }
-                }
+                UI.launchURL('http://xxnetwork.asia/download');
+                // if (Platform.isIOS) {
+                //   // go to ios download page
+                //   UI.launchURL('https://xxnetwork.asia/download');
+                // } else if (Platform.isAndroid) {
+                //   if (buildTarget == BuildTargets.playStore) {
+                //     // go to google play page
+                //     UI.launchURL('https://xxnetwork.asia/download');
+                //     return;
+                //   }
+                //   // download apk
+                //   // START LISTENING FOR DOWNLOAD PROGRESS REPORTING EVENTS
+                //   try {
+                //     String url = versions['android']['url'];
+                //     UpdateApp.updateApp(url: url, appleId: "1520301768");
+                //     showCupertinoDialog(
+                //         context: context,
+                //         builder: (BuildContext ctx) {
+                //           return CupertinoAlertDialog(
+                //             title: Text(dic['update.download']),
+                //             content: Text(dic['update.download.check']),
+                //             actions: [
+                //               CupertinoButton(
+                //                 child: Text(I18n.of(context)
+                //                     .getDic(i18n_full_dic_ui, 'common')['ok']),
+                //                 onPressed: () => Navigator.of(ctx).pop(),
+                //               ),
+                //             ],
+                //           );
+                //         });
+                //   } catch (e) {
+                //     print('Failed to make OTA update. Details: $e');
+                //   }
+                // }
               },
             ),
           ],

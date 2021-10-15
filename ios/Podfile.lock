@@ -64,9 +64,6 @@ PODS:
     - OrderedSet (~> 5.0)
   - flutter_qr_scan (0.0.1):
     - Flutter
-  - fluttertoast (0.0.2):
-    - Flutter
-    - Toast
   - GoogleAppMeasurement (8.6.0):
     - GoogleAppMeasurement/AdIdSupport (= 8.6.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
@@ -119,7 +116,6 @@ PODS:
   - Reachability (3.2)
   - shared_preferences (0.0.1):
     - Flutter
-  - Toast (4.0.0)
   - uni_links (0.0.1):
     - Flutter
   - update_app (0.0.1):
@@ -139,7 +135,6 @@ DEPENDENCIES:
   - Flutter (from `Flutter`)
   - flutter_inappwebview (from `.symlinks/plugins/flutter_inappwebview/ios`)
   - flutter_qr_scan (from `.symlinks/plugins/flutter_qr_scan/ios`)
-  - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
   - image_picker (from `.symlinks/plugins/image_picker/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
   - permission_handler (from `.symlinks/plugins/permission_handler/ios`)
@@ -163,7 +158,6 @@ SPEC REPOS:
     - OrderedSet
     - PromisesObjC
     - Reachability
-    - Toast
 
 EXTERNAL SOURCES:
   aes_ecb_pkcs5_flutter:
@@ -184,8 +178,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_inappwebview/ios"
   flutter_qr_scan:
     :path: ".symlinks/plugins/flutter_qr_scan/ios"
-  fluttertoast:
-    :path: ".symlinks/plugins/fluttertoast/ios"
   image_picker:
     :path: ".symlinks/plugins/image_picker/ios"
   path_provider:
@@ -218,7 +210,6 @@ SPEC CHECKSUMS:
   Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
   flutter_inappwebview: bfd58618f49dc62f2676de690fc6dcda1d6c3721
   flutter_qr_scan: f7c8c497584bbf395efd56ffcc3a60d27ec9de82
-  fluttertoast: 6122fa75143e992b1d3470f61000f591a798cc58
   GoogleAppMeasurement: 2c0c6e2a7ab3fe730ade6379f732bdefb46f50b0
   GoogleDataTransport: 85fd18ff3019bb85d3f2c551d04c481dedf71fc9
   GoogleUtilities: 8de2a97a17e15b6b98e38e8770e2d129a57c0040
@@ -230,7 +221,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
-  Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   uni_links: d97da20c7701486ba192624d99bffaaffcfc298a
   update_app: 03c24a56ba197e2a036d5230b02e85825b76e045
   url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef

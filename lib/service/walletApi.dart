@@ -9,6 +9,8 @@ const post_headers = {"Content-type": "application/json", "Accept": "*/*"};
 class WalletApi {
   static const String _endpoint = 'https://api.polkawallet.io';
   static const String _configEndpoint = 'https://acala.subdao.com';
+  static const String _versionsEndpoint =
+      'https://xxnetwork.asia/download/versions.json';
 
   static const String _jsCodeStorageKey = 'js_service_';
   static const String _jsCodeStorageVersionKey = 'js_service_version_';
@@ -21,15 +23,13 @@ class WalletApi {
 
   static Future<Map> getLatestVersion() async {
     try {
-      Response res =
-          await get(Uri.parse('$_configEndpoint/wallet/versions.json'));
+      Response res = await get(Uri.parse('$_versionsEndpoint'));
       if (res == null) {
         return null;
       } else {
         return jsonDecode(utf8.decode(res.bodyBytes)) as Map;
       }
     } catch (err) {
-      print(err);
       return null;
     }
   }

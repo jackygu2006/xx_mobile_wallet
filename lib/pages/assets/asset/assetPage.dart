@@ -152,9 +152,10 @@ class _AssetPageState extends State<AssetPage> {
               if (widget.service.plugin.basic.isTestNet) {
                 networkName = '${networkName.split('-')[0]}-testnet';
               }
+              // $$$$$$ TO DO: Update subscan link
               final snLink = networkName == 'xxnetwork' ||
                       networkName == 'protonet'
-                  ? 'http://subscan.xxnetwork.asia:4399/account/${widget.service.keyring.current.address}'
+                  ? 'http://subscan.xxnetwork.asia/account/${widget.service.keyring.current.address}'
                   : 'https://$networkName.subscan.io/account/${widget.service.keyring.current.address}';
               UI.launchURL(snLink);
               Navigator.of(context).pop();
