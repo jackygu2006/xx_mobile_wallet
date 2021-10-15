@@ -440,10 +440,10 @@ class _AssetsState extends State<AssetsPage> {
         return Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
-            title: SizedBox(
-              height: 36,
-              child: Image.asset('assets/images/logo.png'),
-            ),
+            // title: SizedBox(
+            //   height: 36,
+            //   child: Image.asset('assets/images/logo.png'),
+            // ),
             centerTitle: false,
             backgroundColor: Colors.transparent,
             elevation: 0.0,

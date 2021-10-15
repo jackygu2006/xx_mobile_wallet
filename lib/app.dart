@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:wallet/common/components/willPopScopWrapper.dart';
 import 'package:wallet/common/consts.dart';
 import 'package:wallet/common/types/pluginDisabled.dart';
@@ -381,7 +379,7 @@ class _WalletAppState extends State<WalletApp> {
         _changeLang(Localizations.localeOf(context).toString());
       }
 
-      _checkUpdate(context); // $$$$$$ 暂时不检查版本更新
+      _checkUpdate(context);
       await _checkJSCodeUpdate(context, service.plugin, needReload: false);
 
       final useLocalJS = WalletApi.getPolkadotJSVersion(

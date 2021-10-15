@@ -53,3 +53,4 @@ app.*.map.json
 /ios/GoogleService-Info.plist
 /ios/Podfile.lock
 /ios/Runner/GoogleService-Info.plist
+*.psd

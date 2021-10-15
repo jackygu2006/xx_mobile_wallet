@@ -353,7 +353,7 @@ class _BackupAccountPageState extends State<BackupAccountPage> {
 
   Widget _buildConfirmBox() {
     List<Container> _containerList = [];
-    print(_randomNumbers);
+    // print(_randomNumbers);
     for (var i = 0; i < TotalConfirms; i++) {
       _containerList.add(
         new Container(
@@ -364,7 +364,7 @@ class _BackupAccountPageState extends State<BackupAccountPage> {
                 width: 1,
               ),
               borderRadius: BorderRadius.all(Radius.circular(4))),
-          padding: EdgeInsets.fromLTRB(16, 16, 16, 10),
+          padding: EdgeInsets.fromLTRB(16, 12, 16, 11),
           margin: EdgeInsets.all(5),
           width: 400,
           child: Text(
@@ -404,7 +404,7 @@ class _BackupAccountPageState extends State<BackupAccountPage> {
                           _wordsLeft.remove(e);
                           _wordsSelected[currentConfirmId++] = e;
                         }
-                        print(_wordsSelected);
+                        // print(_wordsSelected);
                       });
                     },
                   ),
