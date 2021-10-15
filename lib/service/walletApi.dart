@@ -100,7 +100,8 @@ class WalletApi {
 
   static Future<List> getAnnouncements() async {
     try {
-      Response res = await get(Uri.parse('$_endpoint/announce.json'));
+      Response res =
+          await get(Uri.parse('https://xxnetwork.asia/app/announce.json'));
       if (res == null) {
         return null;
       } else {
