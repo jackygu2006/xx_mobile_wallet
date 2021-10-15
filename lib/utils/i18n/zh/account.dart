@@ -77,7 +77,7 @@ const Map<String, String> zhAccount = {
   'guide.2': '参与 PCT 质押和治理',
   'guide.3': '支持 xx network 社交恢复',
   'guide.4': '支持 Acala Defi 中心',
-  'guide.enter': '进入 Polkawallet',
+  'guide.enter': '进入 xxWallet',
   'plugin.note': '功能插件由 ',
   'plugin.team': ' 团队维护。',
   'plugin.disable': '该插件与当前 App 版本不兼容，请等待插件修复。',

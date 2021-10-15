@@ -551,7 +551,7 @@ class _WalletAppState extends State<WalletApp> {
         FocusScope.of(context).focusedChild?.unfocus();
       },
       child: MaterialApp(
-        title: 'Polkawallet',
+        title: 'xxWallet',
         theme: _theme ??
             _getAppTheme(
               widget.plugins[0].basic.primaryColor,

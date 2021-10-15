@@ -87,7 +87,7 @@ const Map<String, String> enAccount = {
   'guide.2': 'PTC Staking & Governance',
   'guide.3': 'XX network social recovery',
   'guide.4': 'Acala Defi Hub',
-  'guide.enter': 'Enter Polkawallet',
+  'guide.enter': 'Enter xxWallet',
   'plugin.note': 'Maintained by ',
   'plugin.team': ' team.',
   'plugin.disable': 'This plugin is outdated and needs fix from maintainer.',
