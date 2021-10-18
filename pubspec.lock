@@ -183,48 +183,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.15.0"
-  connectivity_plus:
-    dependency: transitive
-    description:
-      name: connectivity_plus
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "1.1.0"
-  connectivity_plus_linux:
-    dependency: transitive
-    description:
-      name: connectivity_plus_linux
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "1.1.0"
-  connectivity_plus_macos:
-    dependency: transitive
-    description:
-      name: connectivity_plus_macos
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "1.1.0"
-  connectivity_plus_platform_interface:
-    dependency: transitive
-    description:
-      name: connectivity_plus_platform_interface
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "1.1.0"
-  connectivity_plus_web:
-    dependency: transitive
-    description:
-      name: connectivity_plus_web
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "1.1.0+1"
-  connectivity_plus_windows:
-    dependency: transitive
-    description:
-      name: connectivity_plus_windows
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "1.1.0"
   convert:
     dependency: transitive
     description:
@@ -260,13 +218,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.1.1"
-  dbus:
-    dependency: transitive
-    description:
-      name: dbus
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.5.6"
   device_info:
     dependency: "direct main"
     description:
@@ -455,69 +406,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.1"
-  gql:
-    dependency: transitive
-    description:
-      name: gql
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.13.0"
-  gql_dedupe_link:
-    dependency: transitive
-    description:
-      name: gql_dedupe_link
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "2.0.0"
-  gql_error_link:
-    dependency: transitive
-    description:
-      name: gql_error_link
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.2.0"
-  gql_exec:
-    dependency: transitive
-    description:
-      name: gql_exec
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.3.0"
-  gql_http_link:
-    dependency: transitive
-    description:
-      name: gql_http_link
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.4.0"
-  gql_link:
-    dependency: transitive
-    description:
-      name: gql_link
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.4.0"
-  gql_transform_link:
-    dependency: transitive
-    description:
-      name: gql_transform_link
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.2.0"
-  graphql:
-    dependency: transitive
-    description:
-      name: graphql
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "5.0.0"
-  graphql_flutter:
-    dependency: transitive
-    description:
-      name: graphql_flutter
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "5.0.0"
   graphs:
     dependency: transitive
     description:
@@ -525,13 +413,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.1.0"
-  hive:
-    dependency: transitive
-    description:
-      name: hive
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "2.0.4"
   http:
     dependency: transitive
     description:
@@ -644,13 +525,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "4.1.4"
-  liquid_progress_indicator:
-    dependency: transitive
-    description:
-      name: liquid_progress_indicator
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.3.2"
   logging:
     dependency: transitive
     description:
@@ -693,20 +567,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.2"
-  nm:
-    dependency: transitive
-    description:
-      name: nm
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.3.0"
-  normalize:
-    dependency: transitive
-    description:
-      name: normalize
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.5.5"
   package_config:
     dependency: transitive
     description:
@@ -819,75 +679,12 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.1"
-  polkawallet_plugin_acala:
-    dependency: "direct main"
-    description:
-      path: "."
-      ref: "4e9f4f714666a5e6214fff9e5a89df03d62b756b"
-      resolved-ref: "4e9f4f714666a5e6214fff9e5a89df03d62b756b"
-      url: "https://github.com/AcalaNetwork/polkawallet_plugin_acala.git"
-    source: git
-    version: "0.3.0"
-  polkawallet_plugin_bifrost:
-    dependency: "direct main"
-    description:
-      path: "."
-      ref: "2f6cd149a369229a51bc61a020d453f4414347f1"
-      resolved-ref: "2f6cd149a369229a51bc61a020d453f4414347f1"
-      url: "https://github.com/bifrost-finance/polkawallet_plugin_bifrost.git"
-    source: git
-    version: "0.3.0"
-  polkawallet_plugin_chainx:
-    dependency: "direct main"
-    description:
-      path: "."
-      ref: a4a1d472e06822b22ccc25287405fba2048fe6e8
-      resolved-ref: a4a1d472e06822b22ccc25287405fba2048fe6e8
-      url: "https://github.com/chainx-org/polkawallet_plugin_chainx.git"
-    source: git
-    version: "0.0.2"
-  polkawallet_plugin_edgeware:
-    dependency: "direct main"
-    description:
-      path: "."
-      ref: "11be316dc77b721d41ed6774fbf8d444a5a8eaa9"
-      resolved-ref: "11be316dc77b721d41ed6774fbf8d444a5a8eaa9"
-      url: "https://github.com/remzrn/polkawallet_plugin_edgeware.git"
-    source: git
-    version: "0.3.0"
-  polkawallet_plugin_karura:
-    dependency: "direct main"
-    description:
-      path: "."
-      ref: "5c116fb20a6698871cbad2a8910fbba8597a5aed"
-      resolved-ref: "5c116fb20a6698871cbad2a8910fbba8597a5aed"
-      url: "https://github.com/AcalaNetwork/polkawallet_plugin_karura.git"
-    source: git
-    version: "0.0.1"
   polkawallet_plugin_kusama:
     dependency: "direct main"
     description:
       path: "../polkawallet_plugin_kusama"
       relative: true
     source: path
-    version: "0.3.0"
-  polkawallet_plugin_laminar:
-    dependency: "direct main"
-    description:
-      path: "."
-      ref: "810fed242afdbe35ca89ecdb2c15d6e1c1c7f85f"
-      resolved-ref: "810fed242afdbe35ca89ecdb2c15d6e1c1c7f85f"
-      url: "https://github.com/polkawallet-io/polkawallet_plugin_laminar.git"
-    source: git
-    version: "0.2.2"
-  polkawallet_plugin_statemine:
-    dependency: "direct main"
-    description:
-      path: "."
-      ref: "7d8cf727c5eb78d97205e53fe2ade55c513754a9"
-      resolved-ref: "7d8cf727c5eb78d97205e53fe2ade55c513754a9"
-      url: "https://github.com/polkawallet-io/polkawallet_plugin_statemine.git"
-    source: git
     version: "0.3.0"
   polkawallet_plugin_xxnetwork:
     dependency: "direct overridden"
@@ -952,13 +749,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "4.0.0"
-  rxdart:
-    dependency: transitive
-    description:
-      name: rxdart
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.26.0"
   shared_preferences:
     dependency: transitive
     description:
@@ -1160,13 +950,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.2"
-  uuid:
-    dependency: transitive
-    description:
-      name: uuid
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "3.0.4"
   vector_math:
     dependency: transitive
     description:
