@@ -34,6 +34,7 @@ class ApiAssets {
   Future<void> fetchMarketPriceFromSubScan() async {
     if (apiRoot.plugin.basic.isTestNet) return;
 
+    // ######
     final res =
         await WalletApi.getTokenPriceFromSubScan(apiRoot.plugin.basic.name);
     if (res == null || res['data'] == null) {
