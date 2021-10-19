@@ -3,9 +3,6 @@ PODS:
     - Flutter
   - biometric_storage (0.0.1):
     - Flutter
-  - connectivity_plus (0.0.1):
-    - Flutter
-    - Reachability
   - device_info (0.0.1):
     - Flutter
   - Firebase/Analytics (8.6.0):
@@ -113,7 +110,6 @@ PODS:
   - "permission_handler (5.1.0+2)":
     - Flutter
   - PromisesObjC (2.0.0)
-  - Reachability (3.2)
   - shared_preferences (0.0.1):
     - Flutter
   - uni_links (0.0.1):
@@ -128,7 +124,6 @@ PODS:
 DEPENDENCIES:
   - aes_ecb_pkcs5_flutter (from `.symlinks/plugins/aes_ecb_pkcs5_flutter/ios`)
   - biometric_storage (from `.symlinks/plugins/biometric_storage/ios`)
-  - connectivity_plus (from `.symlinks/plugins/connectivity_plus/ios`)
   - device_info (from `.symlinks/plugins/device_info/ios`)
   - firebase_analytics (from `.symlinks/plugins/firebase_analytics/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
@@ -157,15 +152,12 @@ SPEC REPOS:
     - nanopb
     - OrderedSet
     - PromisesObjC
-    - Reachability
 
 EXTERNAL SOURCES:
   aes_ecb_pkcs5_flutter:
     :path: ".symlinks/plugins/aes_ecb_pkcs5_flutter/ios"
   biometric_storage:
     :path: ".symlinks/plugins/biometric_storage/ios"
-  connectivity_plus:
-    :path: ".symlinks/plugins/connectivity_plus/ios"
   device_info:
     :path: ".symlinks/plugins/device_info/ios"
   firebase_analytics:
@@ -198,7 +190,6 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   aes_ecb_pkcs5_flutter: a82e6ecc47654000805ad9d094a8cd29e4bf9667
   biometric_storage: 1400f1382af3a4cc2bf05340e13c3d8de873ceb9
-  connectivity_plus: 5f0eb61093bec56935f21a1699dd2758bc895587
   device_info: d7d233b645a32c40dfdc212de5cf646ca482f175
   Firebase: 21ac9f28b09a8bdfc005f34c984fca84e7e8786d
   firebase_analytics: 039357074df292fb8a58e119206762d10483a8ec
@@ -219,7 +210,6 @@ SPEC CHECKSUMS:
   path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
   permission_handler: ccb20a9fad0ee9b1314a52b70b76b473c5f8dab0
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
-  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
   uni_links: d97da20c7701486ba192624d99bffaaffcfc298a
   update_app: 03c24a56ba197e2a036d5230b02e85825b76e045
