@@ -77,16 +77,16 @@ dependencies:
   polkawallet_ui: ^0.3.2
 
 dependency_overrides:
-  polkawallet_plugin_kusama:
-    path: ../polkawallet_plugin_kusama
+  # polkawallet_plugin_kusama:
+  #   path: ../polkawallet_plugin_kusama
   polkawallet_plugin_xxnetwork:
     path: ../polkawallet_plugin_xxnetwork
   # polkawallet_plugin_acala:
   #   path: ../../coding/polkawallet/polkawallet_plugin_acala
   # polkawallet_plugin_karura:
   #   path: ../../coding/polkawallet/polkawallet_plugin_karura
-#  polkawallet_plugin_bifrost:
-#    path: ../../coding/polkawallet/polkawallet_plugin_bifrost
+  #  polkawallet_plugin_bifrost:
+  #    path: ../../coding/polkawallet/polkawallet_plugin_bifrost
   # polkawallet_plugin_laminar:
   #   path: ../../coding/polkawallet/polkawallet_plugin_laminar
 #  polkawallet_plugin_statemine:
@@ -95,10 +95,11 @@ dependency_overrides:
 #    path: ../../coding/polkawallet/polkawallet_plugin_chainx
 #  polkawallet_plugin_edgeware:
 #    path: ../../coding/polkawallet/polkawallet_plugin_edgeware
-  polkawallet_ui:
+#  polkawallet_ui:
 #    git:
 #      url: https://github.com/polkawallet-io/ui.git
 #      ref: 485a9cde97f2446d74a1aeb6d8d63e33683461a5
+  polkawallet_ui:
     path: ../ui
   # polkawallet_sdk: ^0.3.2
   polkawallet_sdk:
@@ -112,9 +113,6 @@ dev_dependencies:
   build_runner: ^2.0.3
   mobx_codegen: ^2.0.2
   json_serializable: ^4.1.4
-#  build_runner: ^1.10.9
-#  mobx_codegen: ^1.1.1
-#  json_serializable: ^3.5.1
   flutter_launcher_icons: ^0.9.0
 
 flutter_icons:
