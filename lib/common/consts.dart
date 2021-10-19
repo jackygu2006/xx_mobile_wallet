@@ -18,7 +18,7 @@ const local_tx_store_key = 'local_tx_store';
 
 /// app versions
 enum BuildTargets { apk, playStore, dev }
-const String app_beta_version = 'v0.1.12(109)-beta';
+const String app_beta_version = 'v0.1.13(110)-beta';
 const int app_beta_version_code = 109;
 
 /// para-chains
