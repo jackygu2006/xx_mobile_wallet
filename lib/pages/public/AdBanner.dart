@@ -1,4 +1,3 @@
-// $$$$$$ AdBanner 广告Banner
 import 'dart:async';
 
 import 'package:polkawallet_ui/utils/index.dart';
