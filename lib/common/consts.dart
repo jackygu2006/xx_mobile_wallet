@@ -28,7 +28,13 @@ const para_chain_name_statemine = 'statemine';
 const para_chain_name_statemint = 'statemint';
 const para_chain_name_karura = 'karura';
 const para_chain_name_bifrost = 'bifrost';
+const para_chain_name_xxnetwork = 'xxnetwork';
+const para_chain_name_protonet = 'protonet';
 const plugin_github_links = {
+  para_chain_name_protonet:
+      'https://github.com/jackygu2006/polkawallet_plugin_xxnetwork/issues',
+  para_chain_name_xxnetwork:
+      'https://github.com/jackygu2006/polkawallet_plugin_xxnetwork/issues',
   relay_chain_name_ksm: 'https://github.com/polkawallet-io/app/issues',
   relay_chain_name_dot: 'https://github.com/polkawallet-io/app/issues',
   'acala-tc6':

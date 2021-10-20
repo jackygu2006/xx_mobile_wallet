@@ -2,7 +2,7 @@ const Map<String, String> enAssets = {
   'node.connecting': 'Connecting remote node...',
   'node.failed': 'Remote node connection failed',
   'transfer': 'Transfer',
-  'transfer.alive': 'keep-alive',
+  'transfer.alive': 'Keep-alive',
   'transfer.alive.msg':
       'With the keep-alive option set, the account is protected against removal due to low balances.',
   'receive': 'Receive',
@@ -15,10 +15,10 @@ const Map<String, String> enAssets = {
   'amount.max': 'Max',
   'amount.error': 'Invalid amount',
   'amount.low': 'Insufficient balance',
-  'amount.exist': 'existential deposit',
+  'amount.exist': 'Existential deposit',
   'amount.exist.msg':
       '\nThe minimum amount that an account should have to be deemed active.\n',
-  'amount.fee': 'estimated transfer fee',
+  'amount.fee': 'Estimated transfer fee',
   'currency': 'Currency',
   'currency.select': 'Select Currency',
   'make': 'Make Transfer',

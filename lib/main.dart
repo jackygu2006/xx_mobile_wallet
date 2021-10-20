@@ -35,6 +35,8 @@ void main() async {
   ];
 
   final pluginsConfig = await WalletApi.getPluginsConfig();
+
+  // Add xxnetwork plugin manully
   Map<String, bool> a = {"visible": true, 'enabled': true};
   pluginsConfig['protonet'] = a;
   pluginsConfig['xxnetwork'] = a;

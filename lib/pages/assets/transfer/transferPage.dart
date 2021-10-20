@@ -153,7 +153,8 @@ class _TransferPageState extends State<TransferPage> {
                 xcm_dest_weight_ksm
               ];
         return TxConfirmParams(
-          txTitle: '${dic['transfer']} $symbol (${dic['cross.chain']})',
+          txTitle:
+              '${dic['transfer']} ${symbol.toUpperCase()} (${dic['cross.chain']})',
           module: isToParent
               ? 'polkadotXcm'
               : isFromXTokensParaChain
@@ -181,7 +182,7 @@ class _TransferPageState extends State<TransferPage> {
         Fmt.tokenInt(_amountCtrl.text.trim(), decimals).toString(),
       ];
       return TxConfirmParams(
-        txTitle: '${dic['transfer']} $symbol',
+        txTitle: '${dic['transfer']} ${symbol.toUpperCase()}',
         module: 'balances',
         call: _keepAlive ? 'transferKeepAlive' : 'transfer',
         txDisplay: {
@@ -457,7 +458,7 @@ class _TransferPageState extends State<TransferPage> {
         final colorGrey = Theme.of(context).unselectedWidgetColor;
         return Scaffold(
           appBar: AppBar(
-            title: Text('${dic['transfer']} $symbol'),
+            title: Text('${dic['transfer']} ${symbol.toUpperCase()}'),
             centerTitle: true,
             actions: <Widget>[
               IconButton(

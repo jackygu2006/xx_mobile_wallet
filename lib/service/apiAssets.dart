@@ -33,8 +33,6 @@ class ApiAssets {
 
   Future<void> fetchMarketPriceFromSubScan() async {
     if (apiRoot.plugin.basic.isTestNet) return;
-
-    // ######
     final res =
         await WalletApi.getTokenPriceFromSubScan(apiRoot.plugin.basic.name);
     if (res == null || res['data'] == null) {
@@ -47,18 +45,21 @@ class ApiAssets {
   }
 
   Future<void> fetchMarketPrices(List<String> tokens) async {
-    final List res = await Future.wait(
-        tokens.map((e) => WalletApi.getTokenPrice(e)).toList());
+    if (apiRoot.plugin.basic.name != 'protonet' &&
+        apiRoot.plugin.basic.name != 'xxnetwork') {
+      final List res = await Future.wait(
+          tokens.map((e) => WalletApi.getTokenPrice(e)).toList());
 
-    final Map<String, double> prices = {
-      'KUSD': 1.0,
-      'AUSD': 1.0,
-    };
-    res.forEach((e) {
-      if (e != null && e['price'] != null) {
-        prices[e['token']] = double.parse(e['price']);
-      }
-    });
-    apiRoot.store.assets.setMarketPrices(prices);
+      final Map<String, double> prices = {
+        'KUSD': 1.0,
+        'AUSD': 1.0,
+      };
+      res.forEach((e) {
+        if (e != null && e['price'] != null) {
+          prices[e['token']] = double.parse(e['price']);
+        }
+      });
+      apiRoot.store.assets.setMarketPrices(prices);
+    }
   }
 }

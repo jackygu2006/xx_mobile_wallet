@@ -221,8 +221,7 @@ class _WalletAppState extends State<WalletApp> {
 
   _getConnectNodeParams() {
     NetworkParams node = new NetworkParams();
-    if (_service.plugin.basic.name == "xxnetwork" ||
-        _service.plugin.basic.name == "protonet") {
+    if (_isXxnetwork()) {
       node.name = _service.plugin.basic.name;
       node.endpoint = 'wss://protonet.xxlabs.net';
       node.ss58 = 42;
@@ -292,6 +291,11 @@ class _WalletAppState extends State<WalletApp> {
     });
   }
 
+  bool _isXxnetwork() {
+    return _service.plugin.basic.name == 'protonet' ||
+        _service.plugin.basic.name == 'xxnetwork';
+  }
+
   Future<void> _checkUpdate(BuildContext context) async {
     final versions = await WalletApi.getLatestVersion();
     AppUI.checkUpdate(context, versions, widget.buildTarget, autoCheck: true);
@@ -301,7 +305,9 @@ class _WalletAppState extends State<WalletApp> {
       BuildContext context, PolkawalletPlugin plugin,
       {bool needReload = true}) async {
     // check js code update
-    final jsVersions = await WalletApi.fetchPolkadotJSVersion();
+
+    final jsVersions =
+        _isXxnetwork() ? null : await WalletApi.fetchPolkadotJSVersion();
     if (jsVersions == null) return;
 
     final network = plugin.basic.name;
@@ -380,7 +386,10 @@ class _WalletAppState extends State<WalletApp> {
       }
 
       _checkUpdate(context);
-      await _checkJSCodeUpdate(context, service.plugin, needReload: false);
+
+      // if not xxnetwork, load js_api from https://acala.subdao.com/wallet/js/$networkName.js
+      if (!_isXxnetwork())
+        await _checkJSCodeUpdate(context, service.plugin, needReload: false);
 
       final useLocalJS = WalletApi.getPolkadotJSVersion(
             _store.storage,
