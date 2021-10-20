@@ -1,20 +1,6 @@
 name: wallet
 description: xx network wallet
-
-# The following line prevents the package from being accidentally published to
-# pub.dev using `pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-
-# The following defines the version and build number for your application.
-# A version number is three numbers separated by dots, like 1.2.43
-# followed by an optional build number separated by a +.
-# Both the version and the builder number may be overridden in flutter
-# build by specifying --build-name and --build-number, respectively.
-# In Android, build-name is used as versionName while build-number used as versionCode.
-# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
-# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
-# Read more about iOS versioning at
-# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 version: 1.0.0+1
 
 environment:
@@ -33,14 +19,14 @@ dependencies:
   device_info: ^2.0.1
   uni_links: ^0.5.1
   cupertino_icons: ^1.0.0
-  biometric_storage: ^2.0.2
-  firebase_core: ^1.6.0
+  firebase_core: ^1.7.0
   firebase_analytics: ^8.3.2
   polkawallet_ui: ^0.3.2
   polkawallet_plugin_kusama:
     git:
       url: https://github.com/polkawallet-io/polkawallet_plugin_kusama.git
       ref: e9e7c2546a1a6241c55a064d2fa57987a9265051
+  biometric_storage: ^3.0.1
   # polkawallet_plugin_acala:
   #   git:
   #     url: https://github.com/AcalaNetwork/polkawallet_plugin_acala.git
@@ -101,7 +87,6 @@ dependency_overrides:
 #      ref: 485a9cde97f2446d74a1aeb6d8d63e33683461a5
   polkawallet_ui:
     path: ../ui
-  # polkawallet_sdk: ^0.3.2
   polkawallet_sdk:
     path: ../sdk
   charts_flutter: ^0.11.0
