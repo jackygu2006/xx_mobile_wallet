@@ -8,11 +8,11 @@ xxWallet has the following features:
 * ...
 
 ## Dependencies
-* Flutter 2.2.x
-* Dart 2.13.x
-* Node v14.16
+* Flutter 2.2.2
+* Dart 2.13.3
+* Node v14.16+
 
-Note: use flutter/dart exactly as aboved version.
+Note: use flutter/dart exactly as aboved version, be sure that `flutter doctor` is well running.
 
 ## Repos and Structure
 This app was built with several repos.
@@ -70,7 +70,7 @@ After building, the wrapped single `main.js` file will be in `js_api/dist/`. Thi
 The Quantum Secured Keyring(QSK) was operated in `lib/service/keyring.dart`, loading `/assets/wasm/sleeve.wasm` and create QSK.
 
 * Note:
-After `yarn install`, you need to change `js_api/node-modules/@polkadot/types/augment/lookup/types-substrate.d.ts` a little bit. Add a element `cmix_root?` into interface `PalletStakingValidatorPrefs`, put the type is `Hash`. 
+After `yarn install`, you need to change `js_api/node-modules/@polkadot/types/augment/lookup/types-substrate.d.ts` a little bit. Add an element `cmix_root?` into interface `PalletStakingValidatorPrefs`, put the type is `Hash`. 
 
 The new `PalletStakingValidatorPrefs` will be like this:
 ```
