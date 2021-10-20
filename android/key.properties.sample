@@ -1,0 +1,4 @@
+storePassword=
+keyPassword=
+keyAlias=sign
+storeFile=app/key/sign.kjs

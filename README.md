@@ -1,99 +1,145 @@
 ## Introduction
-在Polkawallet基础上，添加了以下功能：
-* Creating Quantum Secured Wallet, importing and exporting mnemonic
-* Adding xxnetwork plugin
-* Ajusting some UI
+> Thanks [Polkawallet](https://github.com/polkawallet-io) for this fantastic framework to develop customized substrate-based blockchain mobile wallet.
+
+xxWallet has the following features:
+* Create Quantum Secured(QS) Kyepair, import/export QS mnemonic
+* Add [cmix](https://xx.network/cmix-whitepaper.pdf) functions in xxnetwork plugin
+* Update UI
+* ...
 
 ## Dependencies
 * Flutter 2.2.x
 * Dart 2.13.x
 * Node v14.16
 
-## Repos
-This app was built with several repos, developers of other substrate based chain may create their own plugin and put it into polkawallet app:
+Note: use flutter/dart exactly as aboved version.
+
+## Repos and Structure
+This app was built with several repos.
 ```
-__ polkawallet-io/app
+__ xxWallet
     |
-    |__ polkawallet-io/ui
-    |    |__ polkawallet-io/sdk
+    |__ /xx_mobile_wallet
+    |    |__ Mobile wallet main code
     |
-    |__ polkawallet_plugin_kusama
-    |    |__ polkawallet-io/sdk
-    |    |__ polkawallet-io/ui
+    |__ /mobile_wallet_sdk
+    |    |__ jackygu2006/mobile_wallet_sdk/js_api
+    |         |__ Managing Standard and Quantum Secured keyPairs(QSK)
+    |         |__ Connect to remote node and call polkadot-js/api methods
+    |    |__ Interface writen by dart to connect SDK
     |
-    |__ polkawallet_plugin_acala
-    |    |__ polkawallet-io/sdk
-    |    |__ polkawallet-io/ui
+    |__ /xxwallet_ui
+    |    |__ Some common used flutter widgets, like AddressInputForm, TxConfirmPage, ScanPage...
     |
-    |__ polkawallet_plugin_laminar
-    |    |__ polkawallet-io/sdk
-    |    |__ polkawallet-io/ui
+    |__ /polkawallet_plugin_xxnetwork
+    |    |__ Plugin for xxnetwork by mobx framework
+    |    |__ Add customized pallets and functions here
+    |
+    |__ github.com/polkawallet-io/polkawallet_plugin_kusama
+    |    |__ Plugin for polkadot/kusama
     |
     |__ <plugin of another substrate based chain>
     |__ <...>
-
 ```
 
-### 1. polkawallet-io/js_api
-This is a `polkadot-js/api` wrapper which will be built into a single `main.js` file
-to run in a hidden webView inside the App. So the App will connect to a substrate node
-with `polkadot-js`.
+## Installation
+### For Android
+If you don't want to build release package, just pass step 1-2, forward to step 3.
 
-And we wrapped `polkadot-js/keyring` in it, so the App can manage keyPairs.
+#### Step 1. Open a new Firebase App
+Go to [Filebase console](https://console.firebase.google.com/project/_/overview) to open a new APP, download `google-services.json`.
 
-### 2. polkawallet-io/sdk
-This is a `polkawallet-io/js_api` wrapper dart package, it contains:
+Refer to [Android Installation for FlutterFire](https://firebase.flutter.dev/docs/installation/android) for more information.
 
- 1. Keyring. Managing keyPairs.
- 2. PolkawalletSDK. Connect to remote node and call `polkadot-js/api` methods.
- 3. PolkawalletPlugin. A base plugin class, defined the data and life-circle methods
- which will be used in the App.
+#### Step 2. Generate Key Store file
+Generate a Key Store file for signing the App, let's set the file name `sign.jks`.
 
-A polkawallet plugin can get users' keyPairs in the App from Keyring instance.
+[Click here](https://developer.android.com/studio/publish/app-signing#generate-key) to get more information on how to generate key store file.
 
-A polkawallet plugin implementation should extend the `PolkawalletPlugin` class and
-define it's own data & life-circle methods.
-
-### 3. polkawallet-io/ui
-The common used flutter widgets for `polkawallet-io/app`, like:
- - AddressInputForm
- - TxConfirmPage
- - ScanPage
- - ...
-
-### 4. polkawallet-io/polkawallet_plugin_xxx
-Examples:
- 1. [polkawallet-io/polkawallet_plugin_kusama](https://github.com/polkawallet-io/polkawallet_plugin_kusama)
- 2. [polkawallet-io/polkawallet_plugin_acala](https://github.com/polkawallet-io/polkawallet_plugin_acala)
- 3. [polkawallet-io/polkawallet_plugin_laminar](https://github.com/polkawallet-io/polkawallet_plugin_laminar)
-
-### 5. App state management
-We use [https://pub.dev/packages/mobx](https://pub.dev/packages/mobx).
-so the directories in a plugin looks like this:
+#### Step 3. Build SDK
 ```
-__ lib
-    |__ pages (the UI)
-    |__ store (the MobX store)
-    |__ service (the Actions fired by UI to mutate the store)
-    |__ ...
+git clone https://github.com/jackygu2006/mobile_wallet_sdk.git`
+cd mobile_wallet_sdk
+flutter pub get
+cd js_api
+yarn & yarn build
+cd ..
+```
+After building, the wrapped single `main.js` file will be in `js_api/dist/`. This file will be called by `webViewRunner.dart`.
+
+The Quantum Secured Keyring(QSK) was operated in `lib/service/keyring.dart`, loading `/assets/wasm/sleeve.wasm` and create QSK.
+
+* Note:
+After `yarn install`, you need to change `js_api/node-modules/@polkadot/types/augment/lookup/types-substrate.d.ts` a little bit. Add a element `cmix_root?` into interface `PalletStakingValidatorPrefs`, put the type is `Hash`. 
+
+The new `PalletStakingValidatorPrefs` will be like this:
+```
+    interface PalletStakingValidatorPrefs extends Struct {
+        readonly commission: Compact<Perbill>;
+        readonly blocked: bool;
+        readonly cmix_root?: Hash;
+    }
 ```
 
-### 6. Submit your plugin
-While your plugin was finished and tested, you may submit an issue in this repo.
-We will check into your plugin and add it into the App.
+#### Step 4. Get xxWallet ui and xxnetwork plugin
+```
+git clone https://github.com/jackygu2006/xxwallet_ui.git
+git clone https://github.com/jackygu2006/polkawallet_plugin_xxnetwork.git
+cd xxwallet_ui
+flutter pub get
+cd ..
+cd polkawallet_plugin_xxnetwork
+flutter pub get
+cd ..
+```
+Just clone and run `flutter pub get`, don't do anything else.
 
-### 7. Plugin update
-Submit a update request issue to update your plugin. There are two different kinds of update:
- 1. Update the dart package. We will rebuild the App and publish a new release.
- 2. Update the js code of your plugin (dart code was not affected). We will rebuild the
-  js bundle file and the app will perform a hot-update through polkawallet-api.
+#### Step 5. Get main xxWallet
+```
+git clone https://github.com/jackygu2006/xx_mobile_wallet.git
+cd xx_mobile_wallet
+```
 
-## Install
-### Android
-#### 1. Prepare Firebase
+#### Step 6. Config `key.properties`
+Copy `google-services.json`(see step 1) into path `xx_mobile_wallet/android/app/`
 
-#### 2. Android Key
+Copy the key file `sign.jks`(see step 2) into path: `xx_mobile_wallet/android/app/key/`
 
+```
+cd android/app/
+cp key.properties.sample key.properties
+```
+Change the following params:
+```
+storePassword=              # key's store password
+keyPassword=                # key's password
+keyAlias=sign               # key's alias
+storeFile=                  # key file name, ex. app/key/sign.jks
+```
+
+#### Step 7. Config `local.properties`
+Go to `./android/app/`, copy `local.properties.sample` to `local.properties`, set the params as your development environment.
+```
+sdk.dir=                    # Android SDK path, ex. /Users/username/Library/Android/sdk 
+flutter.sdk=                # Flutter SDK path, ex. /Users/username/web/flutter
+flutter.buildMode=release
+flutter.versionName=1.0.0
+flutter.versionCode=1
+jpush.apiKey=               # JiGuang Push service SDK API Key
+```
+
+#### Step 8. Build and run
+```
+cd xx_mobile_wallet
+flutter pub get
+flutter build apk
+```
+The `apk` file is `build/app/outputs/flutter-apk/app-release.apk`, download it to Android mobile and install it.
+
+For development on simulator, run `flutter run ./lib/main.dart --flavor=prod`
+
+### For IOS
+Refer to [IOS Installation for FlutterFire](https://firebase.flutter.dev/docs/installation/ios)
 
 ## TODO List
 * Fetch data from blockchain explorer
