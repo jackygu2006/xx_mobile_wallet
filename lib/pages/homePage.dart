@@ -1,3 +1,7 @@
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:wallet/common/consts.dart';
 import 'package:wallet/pages/assets/index.dart';
 import 'package:wallet/pages/profile/index.dart';
 import 'package:wallet/pages/walletConnect/wcSessionsPage.dart';
@@ -40,6 +44,7 @@ class _HomePageState extends State<HomePage> {
   Future<void> _handleWalletConnect(String uri) async {
     print('wallet connect uri:');
     print(uri);
+    // TODO:
     // await widget.service.plugin.sdk.api.walletConnect.connect(uri);
   }
 
@@ -62,7 +67,7 @@ class _HomePageState extends State<HomePage> {
   //       }
   //     },
   //   );
-  //
+
   //   _jPush.setup(
   //     appKey: JPUSH_APP_KEY,
   //     production: false,
@@ -70,7 +75,7 @@ class _HomePageState extends State<HomePage> {
   //   );
   //   _jPush.applyPushAuthority(
   //       new NotificationSettingsIOS(sound: true, alert: true, badge: false));
-  //
+
   //   _jPush.getRegistrationID().then((rid) {
   //     print("flutter get registration id : $rid");
   //   });

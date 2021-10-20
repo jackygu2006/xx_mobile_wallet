@@ -1,3 +1,4 @@
+// Load local.properties
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
@@ -19,6 +20,15 @@ if (flutterVersionCode == null) {
 def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
     flutterVersionName = '1.0'
+}
+
+// Load key.properties
+def keyProperties = new Properties()
+def keyPropertiesFile = rootProject.file('key.properties')
+if (keyPropertiesFile.exists()) {
+    keyPropertiesFile.withReader('UTF-8') { reader -> 
+        keyProperties.load(reader)
+    }
 }
 
 apply plugin: 'com.android.application'
@@ -51,24 +61,32 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         ndk {
-            //选择要添加的对应 cpu 类型的 .so 库。
             abiFilters 'armeabi', 'x86', 'x86_64', 'mips', 'mips64', 'arm64-v8a', 'armeabi-v7a'
         }
 
-        // 打开后出错 Could not determine the dependencies of task ':app:processDebugManifest'.
+        // JPUSH service, more details: https://jiguang.cn
         // manifestPlaceholders = [
         //     JPUSH_PKGNAME : applicationId,
-        //     JPUSH_APPKEY : System.getenv("JPUSH_APPKEY"),
-        //     JPUSH_CHANNEL : "developer-default"
+        //     JPUSH_APPKEY : localProperties.getProperty('jpush.apiKey'),
+        //     JPUSH_CHANNEL : "developer-default",
+        //     MEIZU_APPKEY : "MZ-魅族的APPKEY",
+        //     MEIZU_APPID : "MZ-魅族的APPID",
+        //     XIAOMI_APPID : "MI-小米的APPID",
+        //     XIAOMI_APPKEY : "MI-小米的APPKEY",
+        //     OPPO_APPKEY : "OP-oppo的APPKEY",
+        //     OPPO_APPID : "OP-oppo的APPID",
+        //     OPPO_APPSECRET : "OP-oppo的APPSECRET",
+        //     VIVO_APPKEY : "vivo的APPKEY",
+        //     VIVO_APPID : "vivo的APPID"        
         // ]
     }
 
     signingConfigs {
         release {
-            storeFile rootProject.file("app/key/sign.kjs")
-            storePassword 'infodog10'
-            keyAlias 'sign'
-            keyPassword 'infodog10'
+            storeFile rootProject.file(keyProperties.getProperty('storeFile'))
+            storePassword keyProperties.getProperty('storePassword')
+            keyAlias keyProperties.getProperty('keyAlias')
+            keyPassword keyProperties.getProperty('keyPassword')
         }
     }
 
@@ -93,12 +111,22 @@ dependencies {
 
     implementation "androidx.appcompat:appcompat:1.2.0"
 
-//    implementation 'cn.jiguang.sdk:jcore:2.8.2'
-//    implementation 'cn.jiguang.sdk:jpush:4.0.8'
-//    implementation 'cn.jiguang.sdk.plugin:fcm:4.0.8'
-//    implementation 'cn.jiguang.sdk.plugin:xiaomi:4.0.8'
-//    implementation 'com.huawei.hms:push:4.0.2.300'
-//    implementation 'cn.jiguang.sdk.plugin:huawei:4.0.8'
+    // implementation 'cn.jiguang.sdk:jcore:2.8.2'
+    // implementation 'cn.jiguang.sdk:jpush:4.0.8'
+    // // Huawei
+    // implementation 'com.huawei.hms:push:4.0.2.300'
+    // implementation 'cn.jiguang.sdk.plugin:huawei:4.0.8'
+    // implementation 'cn.jiguang.sdk.plugin:fcm:4.0.8'
+    // // FCM
+    // implementation 'com.google.firebase:firebase-messaging:21.0.1'
+    // // Xiaomi
+    // implementation 'cn.jiguang.sdk.plugin:xiaomi:4.0.8'
+    // // Meizu
+    // implementation 'cn.jiguang.sdk.plugin:meizu:4.0.0'
+    // // VIVO
+    // implementation 'cn.jiguang.sdk.plugin:vivo:4.0.0' 
+    // // OPPO
+    // implementation 'cn.jiguang.sdk.plugin:oppo:4.0.0' 
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.3.0'

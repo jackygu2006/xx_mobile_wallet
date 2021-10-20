@@ -19,7 +19,7 @@ const local_tx_store_key = 'local_tx_store';
 /// app versions
 enum BuildTargets { apk, playStore, dev }
 const String app_beta_version = 'v0.1.13(110)-beta';
-const int app_beta_version_code = 109;
+const int app_beta_version_code = 110;
 
 /// para-chains
 const relay_chain_name_ksm = 'kusama';
@@ -89,4 +89,10 @@ const xcm_support_dest_chains = {
 const show_guide_status_key = 'show_guide_status';
 const show_banner_status_key = 'show_banner_status';
 
-const JPUSH_APP_KEY = 'dfa60080aa05c5c7b7dc7aa0';
+const JPUSH_APP_KEY = 'a6c43692ccdb3b478f341b14'; // Jacky
+
+// URL for xxnetwork
+const XXNETWORK_SUBSCAN_BASEURL = 'http://subscan.xxnetwork.asia';
+const XXNETWORK_SUBSCAN_API = 'http://subscan.xxnetwork.asia:4399/api';
+const XXNETWORK_DOWNLOAD_URL = 'https://xxnetwork.asia/download';
+const XXNETWORK_CONFIG_JSON_URL = 'https://xxnetwork.asia/app';

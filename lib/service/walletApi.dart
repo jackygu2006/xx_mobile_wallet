@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart';
+import 'package:wallet/common/consts.dart';
 
 const post_headers = {"Content-type": "application/json", "Accept": "*/*"};
 
@@ -10,14 +11,14 @@ class WalletApi {
   static const String _endpoint = 'https://api.polkawallet.io';
   static const String _configEndpoint = 'https://acala.subdao.com';
   static const String _versionsEndpoint =
-      'https://xxnetwork.asia/download/versions.json';
+      '$XXNETWORK_DOWNLOAD_URL/versions.json';
 
   static const String _jsCodeStorageKey = 'js_service_';
   static const String _jsCodeStorageVersionKey = 'js_service_version_';
 
   static String getSnEndpoint(String relayChainName) {
     return relayChainName == 'xxnetwork' || relayChainName == 'protonet'
-        ? 'http://subscan.xxnetwork.asia:4399/api/scan'
+        ? '$XXNETWORK_SUBSCAN_API/scan'
         : 'https://$relayChainName.api.subscan.io/api/scan';
   }
 
@@ -101,7 +102,7 @@ class WalletApi {
   static Future<List> getAnnouncements() async {
     try {
       Response res =
-          await get(Uri.parse('https://xxnetwork.asia/app/announce.json'));
+          await get(Uri.parse('$XXNETWORK_CONFIG_JSON_URL/announce.json'));
       if (res == null) {
         return null;
       } else {
@@ -115,7 +116,7 @@ class WalletApi {
 
   static Future<Map> getTokenPriceFromSubScan(String network) async {
     final url = network == 'xxnetwork' || network == 'protonet'
-        ? 'http://subscan.xxnetwork.asia:4399/api/scan/token'
+        ? '$XXNETWORK_SUBSCAN_API/scan/token'
         : 'https://${network.toLowerCase()}.api.subscan.io/api/scan/token';
     try {
       Response res = await get(Uri.parse(url));

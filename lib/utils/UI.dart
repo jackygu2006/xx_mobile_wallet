@@ -110,14 +110,14 @@ class AppUI {
                 if (!needUpdate) {
                   return;
                 }
-                UI.launchURL('http://xxnetwork.asia/download');
+                UI.launchURL(XXNETWORK_DOWNLOAD_URL);
                 // if (Platform.isIOS) {
                 //   // go to ios download page
-                //   UI.launchURL('https://xxnetwork.asia/download');
+                //   UI.launchURL(XXNETWORK_DOWNLOAD_URL);
                 // } else if (Platform.isAndroid) {
                 //   if (buildTarget == BuildTargets.playStore) {
                 //     // go to google play page
-                //     UI.launchURL('https://xxnetwork.asia/download');
+                //     UI.launchURL(XXNETWORK_DOWNLOAD_URL);
                 //     return;
                 //   }
                 //   // download apk

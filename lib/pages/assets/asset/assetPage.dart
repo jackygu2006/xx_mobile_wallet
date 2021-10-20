@@ -155,7 +155,7 @@ class _AssetPageState extends State<AssetPage> {
               // $$$$$$ TO DO: Update subscan link
               final snLink = networkName == 'xxnetwork' ||
                       networkName == 'protonet'
-                  ? 'http://subscan.xxnetwork.asia/account/${widget.service.keyring.current.address}'
+                  ? '$XXNETWORK_SUBSCAN_BASEURL/account/${widget.service.keyring.current.address}'
                   : 'https://$networkName.subscan.io/account/${widget.service.keyring.current.address}';
               UI.launchURL(snLink);
               Navigator.of(context).pop();
