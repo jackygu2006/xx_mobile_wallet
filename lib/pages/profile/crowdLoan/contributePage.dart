@@ -166,7 +166,7 @@ class _ContributePageState extends State<ContributePage> {
                             available,
                             decimals,
                             lengthMax: 6,
-                          )} $symbol)',
+                          )} ${symbol.toUpperCase()})',
                         ),
                         inputFormatters: [UI.decimalInputFormatter(decimals)],
                         controller: _amountCtrl,

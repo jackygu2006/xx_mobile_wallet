@@ -360,7 +360,7 @@ class _RecoveryInfo extends StatelessWidget {
           children: [
             Text(dic['recovery.deposit'], style: titleStyle),
             Text(
-              '${Fmt.token(recoveryInfo.deposit, decimals)} $symbol',
+              '${Fmt.token(recoveryInfo.deposit, decimals)} ${symbol.toUpperCase()}',
               style: valueStyle,
             )
           ],

@@ -103,10 +103,10 @@ class LocksDetailPageState extends State<LocksDetailPage> {
       String claimableAmount, int decimals, String symbol) async {
     final dic = I18n.of(context).getDic(i18n_full_dic_app, 'assets');
     final params = TxConfirmParams(
-      txTitle: '${dic['lock.vest.claim']} $symbol',
+      txTitle: '${dic['lock.vest.claim']} ${symbol.toUpperCase()}',
       module: 'vesting',
       call: 'claim',
-      txDisplay: {'amount': '$claimableAmount $symbol'},
+      txDisplay: {'amount': '$claimableAmount ${symbol.toUpperCase()}'},
       params: [],
     );
     setState(() {
@@ -145,8 +145,9 @@ class LocksDetailPageState extends State<LocksDetailPage> {
         _claimable != null && _claimable > BigInt.zero && !_submitting;
     final claimableAmount = Fmt.priceFloorBigInt(_claimable, decimals);
     return Scaffold(
-      appBar:
-          AppBar(title: Text('${dic['locked']} ($symbol)'), centerTitle: true),
+      appBar: AppBar(
+          title: Text('${dic['locked']} (${symbol.toUpperCase()})'),
+          centerTitle: true),
       body: SafeArea(
         child: Column(
           children: [

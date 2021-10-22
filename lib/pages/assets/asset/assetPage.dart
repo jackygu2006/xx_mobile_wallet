@@ -404,7 +404,7 @@ class BalanceCard extends StatelessWidget {
             amt,
             decimals,
             lengthMax: 4,
-          )} $symbol ${dic['lock.${i.use.trim()}']}\n';
+          )} ${symbol.toUpperCase()} ${dic['lock.${i.use.trim()}']}\n';
           if (i.use.contains('ormlvest')) {
             hasVesting = true;
           }

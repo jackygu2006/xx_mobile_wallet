@@ -633,7 +633,7 @@ class _TransferPageState extends State<TransferPage> {
                                     Expanded(
                                         flex: 0,
                                         child: Text(
-                                            '${Fmt.priceCeilBigInt(destExistDeposit, decimals, lengthMax: 6)} $symbol')),
+                                            '${Fmt.priceCeilBigInt(destExistDeposit, decimals, lengthMax: 6)} ${symbol.toUpperCase()}')),
                                   ],
                                 ),
                               )
@@ -651,7 +651,7 @@ class _TransferPageState extends State<TransferPage> {
                                       ),
                                     ),
                                     Text(
-                                        '${Fmt.priceCeilBigInt(destFee, decimals, lengthMax: 6)} $symbol'),
+                                        '${Fmt.priceCeilBigInt(destFee, decimals, lengthMax: 6)} ${symbol.toUpperCase()}'),
                                   ],
                                 ),
                               )
@@ -681,7 +681,7 @@ class _TransferPageState extends State<TransferPage> {
                                 ),
                               ),
                               Text(
-                                  '${Fmt.priceCeilBigInt(existDeposit, decimals, lengthMax: 6)} $symbol'),
+                                  '${Fmt.priceCeilBigInt(existDeposit, decimals, lengthMax: 6)} ${symbol.toString()}'),
                             ],
                           ),
                         ),
@@ -698,7 +698,7 @@ class _TransferPageState extends State<TransferPage> {
                                       ),
                                     ),
                                     Text(
-                                        '${Fmt.priceCeilBigInt(Fmt.balanceInt(_fee?.partialFee?.toString()), decimals, lengthMax: 6)} $symbol'),
+                                        '${Fmt.priceCeilBigInt(Fmt.balanceInt(_fee?.partialFee?.toString()), decimals, lengthMax: 6)} ${symbol.toUpperCase()}'),
                                   ],
                                 ),
                               )

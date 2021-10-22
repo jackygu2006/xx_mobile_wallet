@@ -155,7 +155,7 @@ class _InitiateRecoveryPage extends State<InitiateRecoveryPage> {
                     ListTile(
                       title: Text(dic['recovery.deposit']),
                       trailing: Text(
-                        '${Fmt.doubleFormat(_recoveryDeposit)} $symbol',
+                        '${Fmt.doubleFormat(_recoveryDeposit)} ${symbol.toUpperCase()}',
                         style: Theme.of(context).textTheme.headline4,
                       ),
                     )

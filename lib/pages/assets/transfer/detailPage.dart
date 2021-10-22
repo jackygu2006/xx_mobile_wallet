@@ -34,7 +34,7 @@ class TransferDetailPage extends StatelessWidget {
     return TxDetail(
       success: tx.success,
       action: txType,
-      fee: '${Fmt.balance(tx.fee, decimals)} $symbol',
+      fee: '${Fmt.balance(tx.fee, decimals)} ${symbol.toUpperCase()}',
       eventId: tx.extrinsicIndex,
       hash: tx.hash,
       blockTime: Fmt.dateTime(
@@ -45,7 +45,7 @@ class TransferDetailPage extends StatelessWidget {
         TxDetailInfoItem(
           label: dic['amount'],
           content: Text(
-            '$amount $symbol',
+            '$amount ${symbol.toUpperCase()}',
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
         ),

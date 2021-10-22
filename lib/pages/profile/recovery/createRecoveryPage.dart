@@ -169,8 +169,8 @@ class _CreateRecoveryPage extends State<CreateRecoveryPage> {
 ${dic['recovery.deposit']} = ${dic['recovery.deposit.base']} +
 ${dic['recovery.deposit.factor']} * ${dic['recovery.deposit.friends']}
 
-${dic['recovery.deposit.base']} = ${Fmt.doubleFormat(_configDepositBase)} $symbol
-${dic['recovery.deposit.factor']} = ${Fmt.doubleFormat(_friendDepositFactor)} $symbol
+${dic['recovery.deposit.base']} = ${Fmt.doubleFormat(_configDepositBase)} ${symbol.toUpperCase()}
+${dic['recovery.deposit.factor']} = ${Fmt.doubleFormat(_friendDepositFactor)} ${symbol.toUpperCase()}
 ''';
 
     double deposit =
@@ -326,7 +326,7 @@ ${dic['recovery.deposit.factor']} = ${Fmt.doubleFormat(_friendDepositFactor)} $s
                         ),
                       ),
                       trailing: Text(
-                        '${Fmt.doubleFormat(deposit)} $symbol',
+                        '${Fmt.doubleFormat(deposit)} ${symbol.toUpperCase()}',
                         style: Theme.of(context).textTheme.headline4,
                       ),
                     )
