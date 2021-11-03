@@ -4,8 +4,11 @@
 xxWallet has the following features:
 * Create Quantum Secured(QS) Kyepair, import/export QS mnemonic
 * Add [cmix](https://xx.network/cmix-whitepaper.pdf) functions in xxnetwork plugin
+* Special features for xxnetwork
 * Update UI
 * ...
+
+[Download APK](https://xxnetwork.asia/download)
 
 ## Dependencies
 * Flutter 2.2.2
