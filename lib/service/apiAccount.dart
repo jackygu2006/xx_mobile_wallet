@@ -85,6 +85,7 @@ class ApiAccount {
       acc: json,
       password: acc.password,
     );
+    print(res.toString());
     return res;
   }
 

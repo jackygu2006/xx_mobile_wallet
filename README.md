@@ -140,9 +140,3 @@ For development on simulator, run `flutter run ./lib/main.dart --flavor=prod`
 
 ### For IOS
 Refer to [IOS Installation for FlutterFire](https://firebase.flutter.dev/docs/installation/ios)
-
-## TODO List
-* Fetch data from blockchain explorer
-  * Transaction history
-  * Staking operations History
-  * Reward slashes 

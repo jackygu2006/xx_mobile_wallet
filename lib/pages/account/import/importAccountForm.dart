@@ -263,7 +263,7 @@ class _ImportAccountFormState extends State<ImportAccountForm> {
                             labelText: dic['mnemonic.standard'],
                           ),
                           controller: _keyCtrl,
-                          maxLines: 2,
+                          maxLines: 4,
                           validator: _validateInput,
                           onChanged: _onKeyChange,
                         ),
@@ -278,7 +278,7 @@ class _ImportAccountFormState extends State<ImportAccountForm> {
                             labelText: dic['qsmnemonic.option'],
                           ),
                           controller: _qsMnemonic,
-                          maxLines: 2,
+                          maxLines: 4,
                           // validator: _validateInput,
                           onChanged: _onQSKeyChange,
                         ),
@@ -315,7 +315,6 @@ class _ImportAccountFormState extends State<ImportAccountForm> {
                 }
                 widget.service.store.account.setNewAccountKey(
                     _keyCtrl.text.trim(), _qsMnemonic.text.trim());
-
                 final saved = await widget.onSubmit({
                   'keyType': _keyOptions[_keySelection],
                   'cryptoType': _advanceOptions.type ?? CryptoType.sr25519,
@@ -329,6 +328,7 @@ class _ImportAccountFormState extends State<ImportAccountForm> {
 
                   widget.service.plugin
                       .changeAccount(widget.service.keyring.current);
+
                   widget.service.store.assets.loadCache(
                       widget.service.keyring.current,
                       widget.service.plugin.basic.name);

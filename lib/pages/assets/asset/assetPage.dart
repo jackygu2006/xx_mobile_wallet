@@ -152,7 +152,6 @@ class _AssetPageState extends State<AssetPage> {
               if (widget.service.plugin.basic.isTestNet) {
                 networkName = '${networkName.split('-')[0]}-testnet';
               }
-              // $$$$$$ TO DO: Update subscan link
               final snLink = networkName == 'xxnetwork' ||
                       networkName == 'protonet'
                   ? '$XXNETWORK_SUBSCAN_BASEURL/account/${widget.service.keyring.current.address}'

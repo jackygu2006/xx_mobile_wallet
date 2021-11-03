@@ -60,13 +60,11 @@ class _CreateAccountFormState extends State<CreateAccountForm> {
       widget.service.store.account
           .setNewAccount(_nameCtrl.text, _passCtrl.text);
       final success = await widget.onSubmit();
-
       if (success) {
-        /// save password with biometrics after import success
+        // save password with biometrics after import success
         if (_supportBiometric && _enableBiometric) {
           await _authBiometric();
         }
-
         widget.service.plugin.changeAccount(widget.service.keyring.current);
         widget.service.store.account.resetNewAccount();
         Navigator.popUntil(context, ModalRoute.withName('/'));
