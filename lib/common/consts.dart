@@ -18,8 +18,8 @@ const local_tx_store_key = 'local_tx_store';
 
 /// app versions
 enum BuildTargets { apk, playStore, dev }
-const String app_beta_version = 'v0.1.22(124)-beta';
-const int app_beta_version_code = 124;
+const String app_beta_version = 'v0.1.23(125)-beta';
+const int app_beta_version_code = 125;
 
 /// para-chains
 const relay_chain_name_ksm = 'kusama';
