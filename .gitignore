@@ -46,3 +46,5 @@ app.*.map.json
 /android/app/release
 
 *.psd
+/ios/*.p12
+/ios/Runner 20*

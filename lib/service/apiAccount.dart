@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:wallet/common/consts.dart';
 import 'package:wallet/service/index.dart';
@@ -14,7 +13,6 @@ import 'package:polkawallet_sdk/api/types/recoveryInfo.dart';
 import 'package:polkawallet_sdk/storage/types/keyPairData.dart';
 import 'package:polkawallet_sdk/utils/i18n.dart';
 import 'package:polkawallet_ui/components/passwordInputDialog.dart';
-import 'package:polkawallet_ui/utils/i18n.dart';
 
 class ApiAccount {
   ApiAccount(this.apiRoot);
