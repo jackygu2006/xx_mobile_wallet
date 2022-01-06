@@ -19,7 +19,7 @@ abstract class _SettingsStore with Store {
   String localeCode = '';
 
   @observable
-  String network = 'protonet'; // $$$$$$ Default launch plugin
+  String network = 'xxnetwork'; // $$$$$$ Default launch plugin
 
   @observable
   Map liveModules = Map();

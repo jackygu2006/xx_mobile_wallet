@@ -4,13 +4,15 @@ const int SECONDS_OF_YEAR = 365 * 24 * 60 * 60;
 const default_ss58_prefix = {
   'info': 'default',
   'text': 'Default for the connected node',
-  'value': 42,
+  'value': 55,
 };
 const prefixList = [
   default_ss58_prefix,
   {'info': 'substrate', 'text': 'Substrate (development)', 'value': 42},
   {'info': 'kusama', 'text': 'Kusama (canary)', 'value': 2},
-  {'info': 'polkadot', 'text': 'Polkadot (live)', 'value': 0}
+  {'info': 'polkadot', 'text': 'Polkadot (live)', 'value': 0},
+  {'info': 'xxnetwork', 'text': 'xxnetwork (live)', 'value': 55},
+  {'info': 'protonet', 'text': 'xxnetwork (Protonet', 'value': 42},
 ];
 
 /// use this storage to display un-finalized tx
@@ -99,6 +101,6 @@ const JPUSH_APP_KEY = 'a6c43692ccdb3b478f341b14'; // Jacky
 
 // URL for xxnetwork
 const XXNETWORK_SUBSCAN_BASEURL = 'http://subscan.xxnetwork.asia';
-const XXNETWORK_SUBSCAN_API = 'http://101.32.192.132:3030/api';
+const XXNETWORK_SUBSCAN_API = 'https://tool.xxnetwork.asia:3040/api';
 const XXNETWORK_DOWNLOAD_URL = 'https://xxnetwork.asia/download';
 const XXNETWORK_CONFIG_JSON_URL = 'https://xxnetwork.asia/app';

@@ -223,8 +223,8 @@ class _WalletAppState extends State<WalletApp> {
     NetworkParams node = new NetworkParams();
     if (_isXxnetwork()) {
       node.name = _service.plugin.basic.name;
-      node.endpoint = 'wss://protonet.xxlabs.net';
-      node.ss58 = 42;
+      node.endpoint = 'wss://mainnet.xxnet.io';
+      node.ss58 = 55;
       nodes = [node];
       types = registryTypes;
     } else {

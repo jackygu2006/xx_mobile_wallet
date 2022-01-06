@@ -23,8 +23,8 @@ void main() async {
   final plugins = [
     PluginKusama(name: 'polkadot'),
     PluginKusama(),
-    PluginXxnetwork(name: 'protonet'),
-    // PluginXxnetwork(name: 'xxnetwork'),
+    // PluginXxnetwork(name: 'protonet'),
+    PluginXxnetwork(name: 'xxnetwork'),
     // PluginKarura(),
     // PluginStatemine(),
     // PluginAcala(),
@@ -38,8 +38,9 @@ void main() async {
 
   // Add xxnetwork plugin manully
   Map<String, bool> a = {"visible": true, 'enabled': true};
-  pluginsConfig['protonet'] = a;
+  // pluginsConfig['protonet'] = a;
   pluginsConfig['xxnetwork'] = a;
+  print(pluginsConfig);
 
   if (pluginsConfig != null) {
     plugins.removeWhere((i) => !pluginsConfig[i.basic.name]['visible']);
@@ -48,9 +49,10 @@ void main() async {
 
   runApp(WalletApp(
       plugins,
-      [
-        PluginDisabled(
-            'xxnetwork', Image.asset('assets/images/public/xxnetwork_gray.png'))
-      ],
+      [],
+      // [
+      //   PluginDisabled(
+      //       'xxnetwork', Image.asset('assets/images/public/xxnetwork_gray.png'))
+      // ],
       BuildTargets.apk));
 }
