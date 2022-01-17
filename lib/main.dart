@@ -1,6 +1,6 @@
 import 'package:wallet/app.dart';
 import 'package:wallet/common/consts.dart';
-import 'package:wallet/common/types/pluginDisabled.dart';
+// import 'package:wallet/common/types/pluginDisabled.dart';
 import 'package:wallet/service/walletApi.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

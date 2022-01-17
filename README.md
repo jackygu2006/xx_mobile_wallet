@@ -45,6 +45,12 @@ __ xxWallet
     |__ <...>
 ```
 
+## Wallet and Subpuppy framework
+The wallet get data from `SubPuppy`(https://github.com/jackygu2006/subpuppy), a indexed database service.
+
+The framework is following:
+![](https://tva1.sinaimg.cn/large/008i3skNgy1gygtkyouopj30ri0xaq4h.jpg)
+
 ## Installation
 ### For Android
 If you don't want to build release package, just pass step 1-2, forward to step 3.
