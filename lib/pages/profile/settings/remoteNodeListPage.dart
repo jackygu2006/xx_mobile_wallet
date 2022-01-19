@@ -45,6 +45,7 @@ class RemoteNodeListPage extends StatelessWidget {
         },
       );
     }).toList();
+
     return Scaffold(
       appBar: AppBar(
         title: Text(dic['setting.node.list']),

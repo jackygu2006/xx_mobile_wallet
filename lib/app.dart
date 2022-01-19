@@ -201,9 +201,7 @@ class _WalletAppState extends State<WalletApp> {
       _connectedNode = null;
     });
 
-    _getConnectNodeParams();
-    print(nodes);
-    print(types);
+    _getConnectNodeParams(null);
     final connected = await service.plugin.start(_keyring, nodes, types);
 
     setState(() {
@@ -219,12 +217,12 @@ class _WalletAppState extends State<WalletApp> {
   Object types = {};
   List<NetworkParams> nodes = [];
 
-  _getConnectNodeParams() {
+  _getConnectNodeParams(NetworkParams n) {
     NetworkParams node = new NetworkParams();
     if (_isXxnetwork()) {
       node.name = _service.plugin.basic.name;
-      node.endpoint = 'wss://mainnet.xxnet.io';
-      node.ss58 = 55;
+      node.endpoint = n == null ? 'wss://node.xxnetwork.asia' : n.endpoint;
+      node.ss58 = n == null ? 55 : n.ss58;
       nodes = [node];
       types = registryTypes;
     } else {
@@ -283,9 +281,11 @@ class _WalletAppState extends State<WalletApp> {
         _connectedNode = null;
       });
     }
+    print('jackygu _changeNode' + node.endpoint);
     _service.plugin.sdk.api.account.unsubscribeBalance();
-    _getConnectNodeParams();
+    _getConnectNodeParams(node);
     final connected = await _service.plugin.start(_keyring, nodes, types);
+    // final connected = await _service.plugin.start(_keyring, [node], types);
     setState(() {
       _connectedNode = connected;
     });
