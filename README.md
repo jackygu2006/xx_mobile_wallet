@@ -1,3 +1,5 @@
+![](https://tva1.sinaimg.cn/large/008i3skNgy1gym7ozos31j31kc0u0446.jpg)
+
 ## Introduction
 > Thanks [Polkawallet](https://github.com/polkawallet-io) for this fantastic framework to develop customized substrate-based blockchain mobile wallet.
 
