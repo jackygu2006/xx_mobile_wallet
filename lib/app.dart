@@ -281,7 +281,6 @@ class _WalletAppState extends State<WalletApp> {
         _connectedNode = null;
       });
     }
-    print('jackygu _changeNode' + node.endpoint);
     _service.plugin.sdk.api.account.unsubscribeBalance();
     _getConnectNodeParams(node);
     final connected = await _service.plugin.start(_keyring, nodes, types);
