@@ -9,3 +9,6 @@
 
 ## 0.6.12-162 on 2022-1-24 @JackyGu
 * Fixed some bugs while searching validator.
+
+## 0.6.13-163 on 2022-1-27 @JackyGu
+* Fixed some bugs while showing validator list.
