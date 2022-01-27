@@ -12,3 +12,6 @@
 
 ## 0.6.13-163 on 2022-1-27 @JackyGu
 * Fixed some bugs while showing validator list.
+
+## 0.6.14-164 on 2022-1-27 @JackyGu
+* Fixed the next era reward
