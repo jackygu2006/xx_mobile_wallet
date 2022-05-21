@@ -10,7 +10,7 @@ xxWallet has the following features:
 * Update UI
 * ...
 
-[Download APK](https://xxnetwork.asia/download)
+[Download APK](https://www.xxnetwork.asia/download)
 
 ## Dependencies
 * Flutter 2.2.2
